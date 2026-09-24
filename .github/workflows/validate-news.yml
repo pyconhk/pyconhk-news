@@ -28,7 +28,7 @@ jobs:
           repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           path: news
-          fetch-depth: 0
+          fetch-depth: 1
           persist-credentials: false
 
       - name: Check News-only file boundary
@@ -42,7 +42,7 @@ jobs:
           is_news_file() {
             [[ "$1" =~ ^website/outstatic/content/2025-posts/[^/]+\.(en|zh-hk|zh-hant|zh-hans|ja)\.mdx$ ]] ||
               [[ "$1" =~ ^website/outstatic/content/2026-posts/[^/]+\.(en|zh-hk|zh-hant|zh-hans|ja|ko)\.mdx$ ]] ||
-              [[ "$1" =~ ^website/public/outstatic/images/[^/]+\.(png|jpg|jpeg|webp|gif|avif|svg)$ ]]
+              [[ "$1" =~ ^website/public/outstatic/images/[^/]+\.(png|jpg|jpeg|webp|gif|avif)$ ]]
           }
 
           # Only the initial repository documentation and this trusted workflow
@@ -150,8 +150,8 @@ jobs:
               const cover = parse(match[1])?.coverImage;
               if (cover == null || cover === '') continue;
               if (typeof cover !== 'string' ||
-                  !/^\/outstatic\/images\/[^/?#]+\.(?:png|jpe?g|webp|gif|avif|svg)$/u.test(cover)) {
-                errors.push(`${file}: coverImage must use a local /outstatic/images/ asset`);
+                  !/^\/outstatic\/images\/[^/?#]+\.(?:png|jpe?g|webp|gif|avif)$/u.test(cover)) {
+                errors.push(`${file}: coverImage must use a local raster /outstatic/images/ asset`);
                 continue;
               }
               const asset = path.join('website/public', cover.slice(1));
@@ -167,3 +167,9 @@ jobs:
             console.log('All News cover images are present in the repository.');
           }
           JS
+
+      - name: Build website with proposed News content
+        working-directory: website-code/website
+        env:
+          PROGRAMME_ENVIRONMENT: test
+        run: bun run build
