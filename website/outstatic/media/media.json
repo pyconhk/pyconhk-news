@@ -1,0 +1,72 @@
+{
+  "commit": "92fc8d81f5344a1c78462a61c5fa2cf12e959571",
+  "generated": "2025-10-10T03:32:33.375Z",
+  "media": [
+    {
+      "__outstatic": {
+        "commit": "a4b9e327b83d4b9e61286cf0cbd4368b4ae18b24",
+        "hash": "352443181",
+        "path": "website/public/outstatic/images/2025-diamond-sponsor-aws-QzNj.webp"
+      },
+      "alt": "",
+      "filename": "2025-diamond-sponsor-aws-QzNj.webp",
+      "publishedAt": "2025-10-10T00:16:53.920Z",
+      "type": "image"
+    },
+    {
+      "__outstatic": {
+        "commit": "b75194fa2e7be33f03991cdbf7a1edab0a39e445",
+        "hash": "2395113476",
+        "path": "website/public/outstatic/images/2025-platinum-sponsor-lgt-g0MD.webp"
+      },
+      "alt": "",
+      "filename": "2025-platinum-sponsor-lgt-g0MD.webp",
+      "publishedAt": "2025-10-10T00:16:39.303Z",
+      "type": "image"
+    },
+    {
+      "__outstatic": {
+        "commit": "f467919bf16798d89f806913a2a2abd3b3c0b47c",
+        "hash": "2101273585",
+        "path": "website/public/outstatic/images/2025-platinum-sponsor-redhat-EyOD.webp"
+      },
+      "alt": "",
+      "filename": "2025-platinum-sponsor-redhat-EyOD.webp",
+      "publishedAt": "2025-10-10T00:16:46.517Z",
+      "type": "image"
+    },
+    {
+      "__outstatic": {
+        "commit": "92fc8d81f5344a1c78462a61c5fa2cf12e959571",
+        "hash": "4261267646",
+        "path": "website/public/outstatic/images/2025-pyconhk-preevent-notice-g3MT.webp"
+      },
+      "alt": "",
+      "filename": "2025-pyconhk-preevent-notice-g3MT.webp",
+      "publishedAt": "2025-10-10T03:32:33.374Z",
+      "type": "image"
+    },
+    {
+      "__outstatic": {
+        "commit": "5edbdb4e1a79f6c531b79329dea94f466754a279",
+        "hash": "232219813",
+        "path": "website/public/outstatic/images/2025-sprint-day-guide-M5Nj.png"
+      },
+      "alt": "",
+      "filename": "2025-sprint-day-guide-M5Nj.png",
+      "publishedAt": "2025-10-08T04:55:04.227Z",
+      "type": "image"
+    },
+    {
+      "__outstatic": {
+        "commit": "",
+        "hash": "0",
+        "path": "website/public/outstatic/images/news-UxMD.png"
+      },
+      "alt": "",
+      "filename": "news-UxMD.png",
+      "publishedAt": "2025-10-08T02:11:10.030Z",
+      "type": "image"
+    }
+  ]
+}
