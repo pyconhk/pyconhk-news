@@ -34,8 +34,13 @@ jobs:
       - name: Check News-only file boundary
         shell: bash
         env:
-          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+          EVENT_NAME: ${{ github.event_name }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
           BASE_REPOSITORY: ${{ github.repository }}
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+          PR_HEAD_REPOSITORY: ${{ github.event.pull_request.head.repo.full_name }}
+          PR_HEAD_REF: ${{ github.event.pull_request.head.ref }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
 
@@ -45,8 +50,12 @@ jobs:
               [[ "$1" =~ ^website/public/outstatic/images/[^/]+\.(png|jpg|jpeg|webp|gif|avif)$ ]]
           }
 
-          # Only the initial repository documentation and this trusted workflow
-          # live outside News content paths. Future editorial PRs are content-only.
+          is_maintenance_file() {
+            [[ "$1" == README.md || "$1" == .github/workflows/validate-news.yml ]]
+          }
+
+          # These are the only tracked files outside the content boundary.
+          # The PR's workflow is never executed by this trusted base workflow.
           while IFS= read -r -d '' file; do
             case "$file" in
               README.md|.github/workflows/validate-news.yml) ;;
@@ -59,20 +68,57 @@ jobs:
             esac
           done < <(git -C news ls-files -z)
 
-          if [[ "$BASE_SHA" =~ ^[0-9a-f]{40}$ ]] &&
-            [[ "$BASE_SHA" != 0000000000000000000000000000000000000000 ]]; then
+          # Push/dispatch validates the merged tree and content below. PRs also
+          # authorize maintenance against the author's live repository role.
+          if [[ "$EVENT_NAME" == pull_request_target ]]; then
+            [[ "$BASE_SHA" =~ ^[0-9a-f]{40}$ ]] || {
+              echo 'News PR has no valid base revision.' >&2
+              exit 1
+            }
             git -C news fetch --no-tags --depth=1 \
               "https://github.com/${BASE_REPOSITORY}.git" "$BASE_SHA"
+            maintenance_required=false
             while IFS= read -r -d '' file; do
-              if ! is_news_file "$file"; then
-                printf 'News PR/push changed a protected path: %s\n' "$file" >&2
+              if is_news_file "$file"; then
+                continue
+              elif is_maintenance_file "$file"; then
+                maintenance_required=true
+              else
+                printf 'News PR changed an unsupported path: %s\n' "$file" >&2
                 exit 1
               fi
             done < <(git -C news diff --no-renames --name-only -z FETCH_HEAD HEAD)
+
+            if [[ "$maintenance_required" == true ]]; then
+              [[ "$PR_HEAD_REPOSITORY" == "$BASE_REPOSITORY" ]] || {
+                echo 'Repository maintenance must use a same-repository branch.' >&2
+                exit 1
+              }
+              case "$PR_HEAD_REF" in
+                cms|cms/*|cms-editorial/*)
+                  echo 'CMS editorial branches can change News content only.' >&2
+                  exit 1
+                  ;;
+              esac
+              [[ "$PR_AUTHOR" =~ ^[A-Za-z0-9-]{1,39}$ ]] || {
+                echo 'Repository maintenance requires a named repository maintainer.' >&2
+                exit 1
+              }
+              role="$(gh api --method GET \
+                "repos/${BASE_REPOSITORY}/collaborators/${PR_AUTHOR}/permission" \
+                --jq '.role_name // .permission')"
+              case "$role" in
+                admin|maintain) ;;
+                *)
+                  echo 'Only repository admins or maintainers can propose policy/documentation changes.' >&2
+                  exit 1
+                  ;;
+              esac
+            fi
           fi
 
-          if find news/website -type l -print -quit | grep -q .; then
-            echo 'News content cannot contain symlinks.' >&2
+          if git -C news ls-files --stage | grep -E '^(120000|160000) ' >/dev/null; then
+            echo 'News repository files cannot be symlinks or submodules.' >&2
             exit 1
           fi
 
