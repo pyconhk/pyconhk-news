@@ -1,0 +1,169 @@
+name: Validate News content
+
+on:
+  pull_request_target:
+    branches: [test, main]
+    types: [opened, synchronize, reopened, edited]
+  push:
+    branches: [test, main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-news-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: News Content
+    runs-on: ubuntu-latest
+    steps:
+      # pull_request_target runs this trusted workflow from the base branch. The
+      # PR checkout is treated as data; no scripts or actions from it are run.
+      - name: Check out proposed News content
+        uses: actions/checkout@v5
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          path: news
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Check News-only file boundary
+        shell: bash
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+          BASE_REPOSITORY: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+
+          is_news_file() {
+            [[ "$1" =~ ^website/outstatic/content/2025-posts/[^/]+\.(en|zh-hk|zh-hant|zh-hans|ja)\.mdx$ ]] ||
+              [[ "$1" =~ ^website/outstatic/content/2026-posts/[^/]+\.(en|zh-hk|zh-hant|zh-hans|ja|ko)\.mdx$ ]] ||
+              [[ "$1" =~ ^website/public/outstatic/images/[^/]+\.(png|jpg|jpeg|webp|gif|avif|svg)$ ]]
+          }
+
+          # Only the initial repository documentation and this trusted workflow
+          # live outside News content paths. Future editorial PRs are content-only.
+          while IFS= read -r -d '' file; do
+            case "$file" in
+              README.md|.github/workflows/validate-news.yml) ;;
+              *)
+                if ! is_news_file "$file"; then
+                  printf 'Unexpected tracked file: %s\n' "$file" >&2
+                  exit 1
+                fi
+                ;;
+            esac
+          done < <(git -C news ls-files -z)
+
+          if [[ "$BASE_SHA" =~ ^[0-9a-f]{40}$ ]] &&
+            [[ "$BASE_SHA" != 0000000000000000000000000000000000000000 ]]; then
+            git -C news fetch --no-tags --depth=1 \
+              "https://github.com/${BASE_REPOSITORY}.git" "$BASE_SHA"
+            while IFS= read -r -d '' file; do
+              if ! is_news_file "$file"; then
+                printf 'News PR/push changed a protected path: %s\n' "$file" >&2
+                exit 1
+              fi
+            done < <(git -C news diff --no-renames --name-only -z FETCH_HEAD HEAD)
+          fi
+
+          if find news/website -type l -print -quit | grep -q .; then
+            echo 'News content cannot contain symlinks.' >&2
+            exit 1
+          fi
+
+      - name: Check out the matching website validator
+        uses: actions/checkout@v5
+        with:
+          repository: pyconhk/pyconhk-website
+          ref: ${{ github.event.pull_request.base.ref || github.ref_name }}
+          path: website-code
+          persist-credentials: false
+
+      - name: Set up Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: '1.3.10'
+
+      - name: Cache Bun dependencies
+        uses: actions/cache@v5
+        with:
+          path: ~/.bun/install/cache
+          key: bun-${{ runner.os }}-${{ hashFiles('website-code/bun.lock') }}
+          restore-keys: bun-${{ runner.os }}-
+
+      - name: Install website content parser
+        working-directory: website-code
+        run: bun install --frozen-lockfile
+
+      - name: Overlay proposed News content
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf website-code/website/outstatic/content/2025-posts \
+            website-code/website/outstatic/content/2026-posts \
+            website-code/website/public/outstatic/images
+          mkdir -p website-code/website/outstatic/content \
+            website-code/website/public/outstatic/images
+          for year in 2025 2026; do
+            source="news/website/outstatic/content/${year}-posts"
+            if [ -d "$source" ]; then
+              cp -R "$source" website-code/website/outstatic/content/
+            fi
+          done
+          if [ -d news/website/public/outstatic/images ]; then
+            cp -R news/website/public/outstatic/images/. \
+              website-code/website/public/outstatic/images/
+          fi
+
+      - name: Validate locales and frontmatter
+        working-directory: website-code
+        run: node cms/publication/content.ts
+
+      - name: Validate local cover images
+        working-directory: website-code
+        run: |
+          node --input-type=module <<'JS'
+          import fs from 'node:fs';
+          import path from 'node:path';
+          import { parse } from 'yaml';
+
+          const errors = [];
+          for (const year of [2025, 2026]) {
+            const directory = `website/outstatic/content/${year}-posts`;
+            if (!fs.existsSync(directory)) continue;
+            for (const name of fs.readdirSync(directory)) {
+              if (!name.endsWith('.mdx')) continue;
+              const file = path.join(directory, name);
+              const text = fs.readFileSync(file, 'utf8');
+              const match = /^---\r?\n([\s\S]*?)\r?\n---/u.exec(text);
+              if (!match) continue; // The website validator reports this.
+              const cover = parse(match[1])?.coverImage;
+              if (cover == null || cover === '') continue;
+              if (typeof cover !== 'string' ||
+                  !/^\/outstatic\/images\/[^/?#]+\.(?:png|jpe?g|webp|gif|avif|svg)$/u.test(cover)) {
+                errors.push(`${file}: coverImage must use a local /outstatic/images/ asset`);
+                continue;
+              }
+              const asset = path.join('website/public', cover.slice(1));
+              if (!fs.existsSync(asset) || !fs.statSync(asset).isFile()) {
+                errors.push(`${file}: missing ${cover}`);
+              }
+            }
+          }
+          if (errors.length) {
+            console.error(errors.join('\n'));
+            process.exitCode = 1;
+          } else {
+            console.log('All News cover images are present in the repository.');
+          }
+          JS
