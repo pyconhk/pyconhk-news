@@ -1,0 +1,75 @@
+name: Publish CMS News
+
+on:
+  workflow_run:
+    workflows: [Validate News content]
+    types: [completed]
+    branches: [cms, cms-test]
+  schedule:
+    - cron: '1-59/5 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publish-cms-news
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    # Never execute a manually dispatched publication workflow from an editor's branch.
+    if: github.ref == 'refs/heads/main' && (github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      checks: write
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - source: cms
+            target: main
+          - source: cms-test
+            target: test
+    steps:
+      - name: Check out trusted publication tools
+        uses: actions/checkout@v5
+        with:
+          ref: main
+          path: automation
+          persist-credentials: false
+
+      - name: Check out published News history
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ matrix.target }}
+          path: news
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Node.js 24
+        uses: actions/setup-node@v5
+        with:
+          node-version: '24'
+
+      - name: Test publication safeguards
+        run: node --test automation/.github/news-promotion.test.ts
+
+      - name: Prepare a pinned merge candidate
+        id: prepare
+        run: node automation/.github/news-promotion.ts prepare news '${{ matrix.source }}' '${{ matrix.target }}'
+
+      - name: Validate content and build
+        if: steps.prepare.outputs.changed == 'true'
+        uses: ./automation/.github/actions/validate-news
+        with:
+          news-directory: news
+          website-ref: ${{ matrix.target }}
+
+      - name: Automatically publish the validated candidate
+        if: steps.prepare.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node automation/.github/news-promotion.ts publish news
