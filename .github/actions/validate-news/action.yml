@@ -1,0 +1,115 @@
+name: Validate News snapshot
+description: Validate local News data using trusted website code
+inputs:
+  news-directory:
+    description: Checked-out News snapshot path
+    required: true
+  website-ref:
+    description: Trusted website main or test branch
+    required: true
+runs:
+  using: composite
+  steps:
+    - name: Check out the matching website validator
+      uses: actions/checkout@v5
+      with:
+        repository: pyconhk/pyconhk-website
+        ref: ${{ inputs.website-ref }}
+        path: website-code
+        persist-credentials: false
+
+    - name: Set up Node.js 24
+      uses: actions/setup-node@v5
+      with:
+        node-version: '24'
+
+    - name: Set up Bun
+      uses: oven-sh/setup-bun@v2
+      with:
+        bun-version: '1.3.10'
+
+    - name: Cache Bun dependencies
+      uses: actions/cache@v5
+      with:
+        path: ~/.bun/install/cache
+        key: bun-${{ runner.os }}-${{ hashFiles('website-code/bun.lock') }}
+        restore-keys: bun-${{ runner.os }}-
+
+    - name: Install website content parser
+      working-directory: website-code
+      shell: bash
+      run: bun install --frozen-lockfile
+
+    - name: Overlay proposed News content
+      shell: bash
+      env:
+        NEWS_DIRECTORY: ${{ inputs.news-directory }}
+      run: |
+        set -euo pipefail
+        rm -rf website-code/website/outstatic/content/2025-posts \
+          website-code/website/outstatic/content/2026-posts \
+          website-code/website/public/outstatic/images
+        mkdir -p website-code/website/outstatic/content \
+          website-code/website/public/outstatic/images
+        for year in 2025 2026; do
+          source="$NEWS_DIRECTORY/website/outstatic/content/${year}-posts"
+          if [ -d "$source" ]; then
+            cp -R "$source" website-code/website/outstatic/content/
+          fi
+        done
+        if [ -d "$NEWS_DIRECTORY/website/public/outstatic/images" ]; then
+          cp -R "$NEWS_DIRECTORY/website/public/outstatic/images/." \
+            website-code/website/public/outstatic/images/
+        fi
+
+    - name: Validate locales and frontmatter
+      working-directory: website-code
+      shell: bash
+      run: node cms/publication/content.ts
+
+    - name: Validate local cover images
+      working-directory: website-code
+      shell: bash
+      run: |
+        node --input-type=module <<'JS'
+        import fs from 'node:fs';
+        import path from 'node:path';
+        import { parse } from 'yaml';
+
+        const errors = [];
+        for (const year of [2025, 2026]) {
+          const directory = `website/outstatic/content/${year}-posts`;
+          if (!fs.existsSync(directory)) continue;
+          for (const name of fs.readdirSync(directory)) {
+            if (!name.endsWith('.mdx')) continue;
+            const file = path.join(directory, name);
+            const text = fs.readFileSync(file, 'utf8');
+            const match = /^---\r?\n([\s\S]*?)\r?\n---/u.exec(text);
+            if (!match) continue; // The website validator reports this.
+            const cover = parse(match[1])?.coverImage;
+            if (cover == null || cover === '') continue;
+            if (typeof cover !== 'string' ||
+                !/^\/outstatic\/images\/[^/?#]+\.(?:png|jpe?g|webp|gif|avif)$/u.test(cover)) {
+              errors.push(`${file}: coverImage must use a local raster /outstatic/images/ asset`);
+              continue;
+            }
+            const asset = path.join('website/public', cover.slice(1));
+            if (!fs.existsSync(asset) || !fs.statSync(asset).isFile()) {
+              errors.push(`${file}: missing ${cover}`);
+            }
+          }
+        }
+        if (errors.length) {
+          console.error(errors.join('\n'));
+          process.exitCode = 1;
+        } else {
+          console.log('All News cover images are present in the repository.');
+        }
+        JS
+
+    - name: Build website with proposed News content
+      working-directory: website-code/website
+      env:
+        PROGRAMME_ENVIRONMENT: test
+      shell: bash
+      run: bun run build
