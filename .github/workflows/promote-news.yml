@@ -1,4 +1,5 @@
 name: Publish CMS News
+run-name: "Publish CMS News [${{ github.event_name == 'schedule' && 'all' || inputs.target || (github.event.workflow_run.head_branch == 'cms-test' && 'test' || 'production') }}] ${{ inputs.reconcile_id }}"
 
 on:
   workflow_run:
@@ -8,19 +9,49 @@ on:
   schedule:
     - cron: '1-59/5 * * * *'
   workflow_dispatch:
+    inputs:
+      target:
+        type: choice
+        options: [production, test]
+        default: production
+      reconcile_id:
+        type: string
+        default: ''
+      deploy_after:
+        type: boolean
+        default: true
 
 permissions:
   contents: read
 
-concurrency:
-  group: publish-cms-news
-  cancel-in-progress: false
-
 jobs:
+  select:
+    if: github.ref == 'refs/heads/main' && (github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success') && (github.event_name != 'schedule' || vars.CONTENT_RECONCILIATION_ENABLED != 'true')
+    runs-on: ubuntu-latest
+    outputs:
+      routes: ${{ steps.routes.outputs.routes }}
+    steps:
+      - id: routes
+        env:
+          EVENT: ${{ github.event_name }}
+          TARGET: ${{ inputs.target }}
+          CMS_BRANCH: ${{ github.event.workflow_run.head_branch }}
+        run: |
+          if [ "$EVENT" = schedule ]; then
+            echo 'routes=[{"source":"cms","target":"main"},{"source":"cms-test","target":"test"}]' >> "$GITHUB_OUTPUT"
+          elif [ "$TARGET" = test ] || [ "$CMS_BRANCH" = cms-test ]; then
+            echo 'routes=[{"source":"cms-test","target":"test"}]' >> "$GITHUB_OUTPUT"
+          else
+            echo 'routes=[{"source":"cms","target":"main"}]' >> "$GITHUB_OUTPUT"
+          fi
   publish:
+    needs: select
     # Never execute a manually dispatched publication workflow from an editor's branch.
     if: github.ref == 'refs/heads/main' && (github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success')
     runs-on: ubuntu-latest
+    concurrency:
+      group: publish-cms-news-${{ matrix.target }}
+      cancel-in-progress: false
     permissions:
       contents: write
       pull-requests: write
@@ -28,11 +59,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        include:
-          - source: cms
-            target: main
-          - source: cms-test
-            target: test
+        include: ${{ fromJSON(needs.select.outputs.routes) }}
     steps:
       - name: Check out trusted publication tools
         uses: actions/checkout@v5
@@ -73,3 +100,14 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: node automation/.github/news-promotion.ts publish news
+
+      - name: Immediately reconcile the published website
+        # Publication remains successful during a Worker outage; cron repairs the missed handoff.
+        continue-on-error: true
+        if: vars.CONTENT_RECONCILIATION_ENABLED == 'true' && (steps.prepare.outputs.changed == 'true' || inputs.deploy_after)
+        env:
+          RECONCILER_URL: ${{ vars.RECONCILER_URL }}
+          RECONCILER_TOKEN: ${{ secrets.RECONCILER_TOKEN }}
+          DEPLOYMENT_TARGET: ${{ matrix.target == 'main' && 'production' || 'test' }}
+          RECONCILE_ID: ${{ inputs.reconcile_id }}
+        run: node automation/.github/news-promotion.ts deploy
