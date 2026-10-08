@@ -125,13 +125,28 @@ async function publishCandidate(directory, candidate) {
       const result = await api(`pulls/${pull.number}/merge`, 'PUT', { sha: candidate.candidateSha, merge_method: 'merge' });
       if (!result.merged) throw new Error(result.message || 'GitHub declined the merge');
       console.log(`Published ${candidate.sourceSha} via PR #${pull.number}; ${candidate.target} is ${result.sha}`);
-      if (process.env.GITHUB_STEP_SUMMARY) fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `Published **${candidate.source} → ${candidate.target}** via [PR #${pull.number}](${pull.html_url}).\n\nWebsite deployment follows automatically when its scheduled content check sees this version.\n`);
+      if (process.env.GITHUB_STEP_SUMMARY) fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `Published **${candidate.source} → ${candidate.target}** via [PR #${pull.number}](${pull.html_url}).\n\nPublication succeeded. The next step requests immediate website reconciliation; the Worker repairs a missed handoff.\n`);
       return;
     } catch (error) {
       if (![405, 409].includes(error.status) || attempt === 5) throw error;
       await new Promise(resolve => setTimeout(resolve, 5000));
     }
   }
+}
+
+export async function dispatchWebsite(environment, reconciliationId = '', dispatch = fetch) {
+  if (!['production', 'test'].includes(environment)) throw new Error('Invalid website deployment target');
+  const endpoint = process.env.RECONCILER_URL;
+  const token = process.env.RECONCILER_TOKEN;
+  if (!endpoint || !token) throw new Error('Immediate deployment requires RECONCILER_URL and RECONCILER_TOKEN');
+  const url = new URL('/deploy', endpoint);
+  if (url.protocol !== 'https:' || url.username || url.password || !url.hostname.endsWith('.workers.dev')) throw new Error('Use the configured HTTPS reconciler Worker');
+  const response = await dispatch(url.href, {
+    method: 'POST', headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ target: environment, id: reconciliationId || `news-${process.env.GITHUB_RUN_ID}` }),
+    redirect: 'error', signal: AbortSignal.timeout(20_000),
+  });
+  if (!response.ok) throw new Error(`Immediate deployment callback failed: ${response.status}`);
 }
 
 async function main() {
@@ -150,6 +165,8 @@ async function main() {
     console.log(`Prepared ${candidate.candidateSha} from ${candidate.sourceSha}`);
   } else if (command === 'publish') {
     await publishCandidate(directory, JSON.parse(fs.readFileSync(stateFile, 'utf8')));
+  } else if (command === 'deploy') {
+    await dispatchWebsite(process.env.DEPLOYMENT_TARGET, process.env.RECONCILE_ID || '');
   } else if (command === 'boundary') {
     const head = 'HEAD';
     const base = /^[a-f0-9]{40}$/u.test(process.env.BASE_SHA || '') && !/^0{40}$/u.test(process.env.BASE_SHA || '')
