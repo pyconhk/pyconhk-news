@@ -4,6 +4,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 export const routes = { cms: 'main', 'cms-test': 'test' };
+export const intakeRoutes = { main: 'cms', test: 'cms-test' };
 const repository = 'pyconhk/pyconhk-news';
 const maintenanceFiles = new Set([
   'README.md', '.github/CODEOWNERS', '.github/news-promotion.ts',
@@ -30,6 +31,13 @@ function changedFiles(directory, base, head) {
   return git(directory, ['diff', '--no-renames', '--name-only', '-z', base, head]).split('\0').filter(Boolean);
 }
 
+function abortMerge(directory, error, message) {
+  const conflicts = git(directory, ['diff', '--name-only', '--diff-filter=U']);
+  try { git(directory, ['merge', '--abort']); } catch { /* A failed fast-forward leaves no merge state. */ }
+  const details = [conflicts && `Conflicting files:\n${conflicts}`, error.stdout, error.stderr].filter(Boolean).join('\n').trim();
+  throw new Error(`${message} ${details || error.message}`);
+}
+
 export function assertBoundary(directory, base, head, allowMaintenance = false) {
   const allowed = file => isNewsFile(file) || (allowMaintenance && maintenanceFiles.has(file));
   const invalid = changedFiles(directory, base, head).filter(file => !allowed(file));
@@ -42,13 +50,18 @@ export function assertBoundary(directory, base, head, allowMaintenance = false) 
   }
 }
 
+export function assertIntakeBoundary(directory, intake, refs = { intake, published: routes[intake] }) {
+  if (!Object.hasOwn(routes, intake)) throw new Error(`Invalid CMS intake: ${intake}`);
+  const base = git(directory, ['merge-base', refs.published, refs.intake]);
+  assertBoundary(directory, base, refs.intake);
+}
+
 export function prepareCandidate(directory, source, target, refs = { source, target }) {
   if (routes[source] !== target) throw new Error(`Invalid publication route: ${source} → ${target}`);
   const sourceSha = git(directory, ['rev-parse', refs.source]);
   const targetSha = git(directory, ['rev-parse', refs.target]);
   if (ancestor(directory, sourceSha, targetSha)) return null;
-  const base = git(directory, ['merge-base', targetSha, sourceSha]);
-  assertBoundary(directory, base, sourceSha);
+  assertIntakeBoundary(directory, source, { intake: sourceSha, published: targetSha });
   git(directory, ['checkout', '--detach', targetSha]);
   try {
     git(directory, ['-c', 'user.name=github-actions[bot]', '-c', 'user.email=41898282+github-actions[bot]@users.noreply.github.com',
@@ -60,12 +73,65 @@ export function prepareCandidate(directory, source, target, refs = { source, tar
     git(directory, ['-c', 'user.name=github-actions[bot]', '-c', 'user.email=41898282+github-actions[bot]@users.noreply.github.com',
       'commit', '-m', `Promote ${source} News (${sourceSha.slice(0, 7)})`]);
   } catch (error) {
-    try { git(directory, ['merge', '--abort']); } catch { /* No merge remains after a completed commit. */ }
-    throw new Error(`Cannot safely combine ${source} with ${target}; published content is unchanged. ${error.stderr || error.message}`);
+    abortMerge(directory, error, `Cannot safely combine ${source} with ${target}; published content is unchanged.`);
   }
   const candidateSha = git(directory, ['rev-parse', 'HEAD']);
   assertBoundary(directory, targetSha, candidateSha);
   return { source, target, sourceSha, targetSha, candidateSha };
+}
+
+export function prepareIntakeSync(directory, published, intake, refs = { published, intake }) {
+  if (!Object.hasOwn(intakeRoutes, published) || intakeRoutes[published] !== intake) throw new Error(`Invalid intake sync route: ${published} → ${intake}`);
+  const publishedSha = git(directory, ['rev-parse', refs.published]);
+  const intakeSha = git(directory, ['rev-parse', refs.intake]);
+  const base = git(directory, ['merge-base', publishedSha, intakeSha]);
+  // Editors supply content only. Only the published branch supplies reviewed automation.
+  assertBoundary(directory, base, intakeSha);
+  assertBoundary(directory, base, publishedSha, true);
+  if (ancestor(directory, publishedSha, intakeSha)) return null;
+  git(directory, ['checkout', '--detach', intakeSha]);
+  try {
+    git(directory, ['-c', 'user.name=github-actions[bot]', '-c', 'user.email=41898282+github-actions[bot]@users.noreply.github.com',
+      'merge', '--no-edit', publishedSha]);
+  } catch (error) {
+    abortMerge(directory, error, `Cannot safely sync ${published} into ${intake}; saved CMS content is unchanged.`);
+  }
+  const candidateSha = git(directory, ['rev-parse', 'HEAD']);
+  assertBoundary(directory, intakeSha, candidateSha, true);
+  return { published, intake, publishedSha, intakeSha, candidateSha };
+}
+
+function remoteSha(directory, branch) {
+  return git(directory, ['ls-remote', '--heads', 'origin', `refs/heads/${branch}`]).split(/\s/u)[0] || null;
+}
+
+export async function syncIntake(directory, published, { beforePush = () => {} } = {}) {
+  if (!Object.hasOwn(intakeRoutes, published)) throw new Error(`Invalid published branch: ${published}`);
+  const intake = intakeRoutes[published];
+  if (!remoteSha(directory, intake)) { console.log(`${intake} is not configured; skipping sync.`); return null; }
+  for (let attempt = 0; attempt < 3; attempt++) {
+    git(directory, ['fetch', '--no-tags', 'origin', `+refs/heads/${published}:refs/remotes/origin/${published}`, `+refs/heads/${intake}:refs/remotes/origin/${intake}`]);
+    const candidate = prepareIntakeSync(directory, published, intake, { published: `origin/${published}`, intake: `origin/${intake}` });
+    if (!candidate) {
+      if (remoteSha(directory, published) !== git(directory, ['rev-parse', `origin/${published}`]) || remoteSha(directory, intake) !== git(directory, ['rev-parse', `origin/${intake}`])) continue;
+      console.log(`${intake} already includes published ${published}.`);
+      return null;
+    }
+    if (remoteSha(directory, published) !== candidate.publishedSha || remoteSha(directory, intake) !== candidate.intakeSha) continue;
+    await beforePush(candidate, attempt);
+    try {
+      // Ordinary push only: a concurrent CMS save must reject this candidate, never be replaced.
+      git(directory, ['-c', 'credential.helper=', '-c', 'credential.helper=!gh auth git-credential',
+        'push', 'origin', `${candidate.candidateSha}:refs/heads/${intake}`]);
+    } catch (error) {
+      if (remoteSha(directory, published) !== candidate.publishedSha || remoteSha(directory, intake) !== candidate.intakeSha) continue;
+      throw error;
+    }
+    if (remoteSha(directory, published) !== candidate.publishedSha || remoteSha(directory, intake) !== candidate.candidateSha) continue;
+    console.log(`Synced published ${published} ${candidate.publishedSha} into ${intake} at ${candidate.candidateSha}.`);
+    return candidate;
+  }
+  throw new Error(`Published or CMS heads kept changing during ${published} → ${intake} sync; saved commits were preserved. Retry synchronization.`);
 }
 
 async function api(endpoint, method = 'GET', body) {
@@ -167,14 +233,30 @@ async function main() {
     await publishCandidate(directory, JSON.parse(fs.readFileSync(stateFile, 'utf8')));
   } else if (command === 'deploy') {
     await dispatchWebsite(process.env.DEPLOYMENT_TARGET, process.env.RECONCILE_ID || '');
+  } else if (command === 'sync') {
+    await syncIntake(directory, source);
   } else if (command === 'boundary') {
     const head = 'HEAD';
+    const event = process.env.GITHUB_EVENT_NAME;
+    const ref = process.env.GITHUB_REF_NAME || '';
+    if (event === 'push' && !Object.hasOwn(routes, ref) && !Object.hasOwn(intakeRoutes, ref)) throw new Error('Invalid News push branch');
+    // Native context also supports older intake workflows without the explicit flag.
+    const intake = process.env.CMS_INTAKE_BRANCH || (event === 'push' && Object.hasOwn(routes, ref) ? ref : undefined);
+    if (intake) {
+      if (!Object.hasOwn(routes, intake) || (event && (event !== 'push' || ref !== intake))) throw new Error('Invalid CMS intake branch');
+      const published = routes[intake];
+      const history = git(directory, ['rev-parse', '--is-shallow-repository']) === 'true' ? ['--unshallow'] : [];
+      git(directory, ['fetch', '--no-tags', ...history, 'origin', `+refs/heads/${intake}:refs/remotes/origin/${intake}`, `+refs/heads/${published}:refs/remotes/origin/${published}`]);
+      assertIntakeBoundary(directory, intake, { intake: head, published: `origin/${published}` });
+      console.log(`News file boundary passed against published ${published}.`);
+      return;
+    }
     const base = /^[a-f0-9]{40}$/u.test(process.env.BASE_SHA || '') && !/^0{40}$/u.test(process.env.BASE_SHA || '')
       ? process.env.BASE_SHA : head;
     if (base !== head) git(directory, ['fetch', '--no-tags', '--depth=1', 'origin', base]);
     assertBoundary(directory, base, head, process.env.ALLOW_MAINTENANCE === 'true');
     console.log('News file boundary passed.');
-  } else throw new Error('Expected prepare, publish or boundary');
+  } else throw new Error('Expected prepare, publish, sync, deploy or boundary');
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

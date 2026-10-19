@@ -35,7 +35,7 @@ jobs:
           repository: ${{ github.event.pull_request.head.repo.full_name || github.repository }}
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           path: news
-          fetch-depth: 1
+          fetch-depth: 0
           persist-credentials: false
 
       - name: Set up Node.js 24
@@ -47,7 +47,11 @@ jobs:
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
           ALLOW_MAINTENANCE: ${{ github.ref_name != 'cms' && github.ref_name != 'cms-test' }}
+          CMS_INTAKE_BRANCH: ${{ github.event_name == 'push' && (github.ref_name == 'cms' || github.ref_name == 'cms-test') && github.ref_name || '' }}
         run: node automation/.github/news-promotion.ts boundary news
+
+      - name: Test publication safeguards
+        run: node --test automation/.github/news-promotion.test.ts
 
       - name: Validate content and build
         uses: ./automation/.github/actions/validate-news

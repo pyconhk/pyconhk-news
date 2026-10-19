@@ -34,6 +34,25 @@ stop publication without changing the published branch. Later CMS commits are
 left intact for the next run. The intake branches are never force-pushed or
 reset. Test intake can only publish to `test`; production intake only to `main`.
 
+After publication, the same trusted job merges the actual published `main` head
+back into `cms` (`test` into `cms-test`). Human pushes to either published branch
+also start this synchronization, with completed published-branch validation
+handled by trusted `main` automation as a backstop. The explicit publication
+step covers merges
+made with `GITHUB_TOKEN`, which do not trigger another push workflow. A later
+publication run also repairs a missed synchronization when there is no new CMS
+content. Synchronization and publication share a per-target concurrency group.
+
+Synchronization uses an ordinary fast-forward or merge and a non-force push.
+Saved drafts and later editor commits are preserved. Concurrent updates cause a
+bounded refetch and remerge; conflicting content stops with its file paths and
+leaves the saved branch intact. A synchronization failure after publication does
+not roll back the published article. CMS validation compares editor changes with
+their shared ancestor in the matching trusted published branch, so inherited
+reviewed maintenance is accepted while CMS-authored workflow changes are refused.
+This updates saved Git content; an already-open browser editor must reopen the
+article to load the synchronized version before making another edit.
+
 The website repository detects the validated News `main` and `test` snapshots on
 its existing five-minute deployment schedule, pins their commit SHAs, and builds
 only when inputs changed. Website deployment remains in GitHub Actions, using
@@ -80,8 +99,9 @@ node --test .github/news-promotion.test.ts
 ```
 
 The tests cover conflict preservation, independent destination changes, intake
-isolation, later CMS commits, protected file rejection and already-published
-snapshots. Full content and website build validation runs in GitHub Actions.
+isolation, later CMS commits, protected file rejection, published corrections
+through consecutive editing cycles, synchronization ancestry, saved drafts and
+concurrent pushes. Full content and website build validation runs in GitHub Actions.
 
 Original import: `pyconhk/pyconhk-website` main commit
 `91a93d42b425b691bfc0f7f51b0334e2e60702ec`. Existing archive content, URLs and
