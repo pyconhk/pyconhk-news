@@ -1,11 +1,13 @@
 name: Publish CMS News
-run-name: "Publish CMS News [${{ github.event_name == 'schedule' && 'all' || inputs.target || (github.event.workflow_run.head_branch == 'cms-test' && 'test' || 'production') }}] ${{ inputs.reconcile_id }}"
+run-name: "Publish CMS News [${{ github.event_name == 'schedule' && 'all' || inputs.target || ((github.event.workflow_run.head_branch == 'cms-test' || github.event.workflow_run.head_branch == 'test' || github.ref_name == 'test') && 'test' || 'production') }}] ${{ inputs.reconcile_id }}"
 
 on:
+  push:
+    branches: [main, test]
   workflow_run:
     workflows: [Validate News content]
     types: [completed]
-    branches: [cms, cms-test]
+    branches: [cms, cms-test, main, test]
   schedule:
     - cron: '1-59/5 * * * *'
   workflow_dispatch:
@@ -26,7 +28,7 @@ permissions:
 
 jobs:
   select:
-    if: github.ref == 'refs/heads/main' && (github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success') && (github.event_name != 'schedule' || vars.CONTENT_RECONCILIATION_ENABLED != 'true')
+    if: github.event_name != 'push' && github.ref == 'refs/heads/main' && (github.event_name != 'workflow_run' || (github.event.workflow_run.conclusion == 'success' && (github.event.workflow_run.head_branch == 'cms' || github.event.workflow_run.head_branch == 'cms-test'))) && (github.event_name != 'schedule' || vars.CONTENT_RECONCILIATION_ENABLED != 'true')
     runs-on: ubuntu-latest
     outputs:
       routes: ${{ steps.routes.outputs.routes }}
@@ -47,7 +49,7 @@ jobs:
   publish:
     needs: select
     # Never execute a manually dispatched publication workflow from an editor's branch.
-    if: github.ref == 'refs/heads/main' && (github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success')
+    if: github.event_name != 'push' && github.ref == 'refs/heads/main' && (github.event_name != 'workflow_run' || (github.event.workflow_run.conclusion == 'success' && (github.event.workflow_run.head_branch == 'cms' || github.event.workflow_run.head_branch == 'cms-test')))
     runs-on: ubuntu-latest
     concurrency:
       group: publish-cms-news-${{ matrix.target }}
@@ -111,3 +113,49 @@ jobs:
           DEPLOYMENT_TARGET: ${{ matrix.target == 'main' && 'production' || 'test' }}
           RECONCILE_ID: ${{ inputs.reconcile_id }}
         run: node automation/.github/news-promotion.ts deploy
+
+      # GITHUB_TOKEN merges do not trigger push workflows. Also backfill a missed
+      # sync when prepare finds the intake snapshot already published.
+      - name: Sync published changes back to the CMS intake
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node automation/.github/news-promotion.ts sync news '${{ matrix.target }}'
+
+  sync:
+    name: Sync published News to CMS
+    if: (github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/test')) || (github.event_name == 'workflow_run' && github.event.workflow_run.event == 'push' && github.event.workflow_run.conclusion == 'success' && (github.event.workflow_run.head_branch == 'main' || github.event.workflow_run.head_branch == 'test'))
+    runs-on: ubuntu-latest
+    concurrency:
+      group: publish-cms-news-${{ github.event.workflow_run.head_branch || github.ref_name }}
+      cancel-in-progress: false
+    permissions:
+      contents: write
+    steps:
+      - name: Check out trusted synchronization tools
+        uses: actions/checkout@v5
+        with:
+          ref: main
+          path: automation
+          persist-credentials: false
+
+      - name: Check out published News history
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.workflow_run.head_branch || github.ref_name }}
+          path: news
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Node.js 24
+        uses: actions/setup-node@v5
+        with:
+          node-version: '24'
+
+      - name: Test publication safeguards
+        run: node --test automation/.github/news-promotion.test.ts
+
+      - name: Preserve CMS edits while syncing published changes
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PUBLISHED_BRANCH: ${{ github.event.workflow_run.head_branch || github.ref_name }}
+        run: node automation/.github/news-promotion.ts sync news "$PUBLISHED_BRANCH"
