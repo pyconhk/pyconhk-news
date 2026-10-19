@@ -106,3 +106,25 @@ test('reviewed automation maintenance is allowed only outside CMS promotion', t 
   assert.equal(isNewsFile('website/outstatic/content/2025-posts/story.ko.mdx'), false);
   assert.equal(isNewsFile('website/public/outstatic/images/logo.svg'), false);
 });
+
+test('immediate deployment callback is target scoped and fails closed without configuration', async t => {
+  const { dispatchWebsite } = await import('./news-promotion.ts');
+  const oldUrl = process.env.RECONCILER_URL;
+  const oldToken = process.env.RECONCILER_TOKEN;
+  t.after(() => {
+    if (oldUrl === undefined) delete process.env.RECONCILER_URL; else process.env.RECONCILER_URL = oldUrl;
+    if (oldToken === undefined) delete process.env.RECONCILER_TOKEN; else process.env.RECONCILER_TOKEN = oldToken;
+  });
+  delete process.env.RECONCILER_TOKEN;
+  await assert.rejects(dispatchWebsite('test', 'run-1'), /requires/);
+  await assert.rejects(dispatchWebsite('cms', 'run-1'), /Invalid website/);
+  process.env.RECONCILER_URL = 'https://pyconhk-content-reconciler.example.workers.dev';
+  process.env.RECONCILER_TOKEN = 'fixture-only';
+  const calls = [];
+  await dispatchWebsite('production', 'run-1', async (url, options) => {
+    calls.push({ url, body: JSON.parse(options.body) });
+    return new Response('checked');
+  });
+  assert.deepEqual(calls, [{ url: `${process.env.RECONCILER_URL}/deploy`, body: { target: 'production', id: 'run-1' } }]);
+  await assert.rejects(dispatchWebsite('test', 'run-2', async () => new Response(null, { status: 503 })), /callback failed/);
+});
