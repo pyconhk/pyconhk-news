@@ -83,11 +83,7 @@
       "setupUrl": "",
       "level": "all-levels",
       "discordUrl": "",
-      "skills": [
-        "Python(모든 수준)",
-        "예제와 문서",
-        "Rust(선택)"
-      ],
+      "skills": [],
       "contributions": [
         "스타일이 적용된 배지, 알림, 입력란, 목록, 레이아웃과 헤드리스 테스트를 개발합니다.",
         "Ctrl-C 처리를 포함해 macOS와 Windows의 기능을 Linux와 동등하게 개선합니다.",

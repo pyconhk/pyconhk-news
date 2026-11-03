@@ -83,11 +83,7 @@
       "setupUrl": "",
       "level": "all-levels",
       "discordUrl": "",
-      "skills": [
-        "Python（経験不問）",
-        "サンプルとドキュメント",
-        "Rust（任意）"
-      ],
+      "skills": [],
       "contributions": [
         "スタイル付きのバッジ、アラート、入力欄、リスト、レイアウトとヘッドレステストを作成する。",
         "Ctrl-C の処理を含め、macOS と Windows の機能を Linux と同等にする改善に取り組む。",

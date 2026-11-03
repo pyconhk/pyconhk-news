@@ -83,11 +83,7 @@
       "setupUrl": "",
       "level": "all-levels",
       "discordUrl": "",
-      "skills": [
-        "Python（任何程度）",
-        "範例與文件",
-        "Rust（可選）"
-      ],
+      "skills": [],
       "contributions": [
         "開發具樣式的徽章、提示、輸入框、列表及版面配置，並加入無介面測試。",
         "改善 macOS 與 Windows，使功能與 Linux 看齊，包括 Ctrl-C 處理。",
