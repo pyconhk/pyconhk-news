@@ -69,8 +69,30 @@
     {
       "id": "project-list",
       "question": "올해 어떤 프로젝트와 스프린트 리드가 참가하나요?",
-      "answer": "프로젝트, 스프린트 리드와 자세한 운영 방식을 조율하고 있습니다. 확정된 정보와 프로젝트별 환경 설정 안내는 준비되는 대로 이 페이지에 추가합니다."
+      "answer": "Luciano Scarpulla가 nsh-py: 순수 Python으로 만드는 네이티브 데스크톱 UI를 이끌기로 확정되었습니다. 참여 방법은 Sprint Day 프로젝트 목표를 확인해 주세요. 추가 프로젝트와 Python 전용 설정 정보는 확인 후 안내합니다."
     }
   ],
-  "projects": []
+  "projects": [
+    {
+      "id": "nsh-py",
+      "status": "published",
+      "title": "nsh-py: 순수 Python으로 만드는 네이티브 데스크톱 UI",
+      "description": "Luciano와 함께 Native Shell(NSH)의 Python 바인딩을 개발합니다. Sprint 목표는 스타일이 적용된 컴포넌트, 예제와 macOS/Windows/Linux 지원을 개선하는 것입니다. 저장소 링크는 NSH 업스트림 프로젝트를 가리킵니다. Python 전용 설정 안내는 준비되는 대로 추가합니다. 참가자마다 PR 하나가 병합되는 것을 목표로 합니다.\n\n경험에 관계없이 환영하며 예제나 문서 작성으로도 참여할 수 있습니다. Rust는 선택 사항입니다. macOS, Windows 또는 Linux 노트북을 가져와 주세요.",
+      "lead": "Luciano Scarpulla",
+      "repositoryUrl": "https://github.com/longbridge/nsh",
+      "setupUrl": "",
+      "skills": [
+        "Python(모든 수준)",
+        "예제와 문서",
+        "Rust(선택)"
+      ],
+      "contributions": [
+        "스타일이 적용된 배지, 알림, 입력란, 목록, 레이아웃과 헤드리스 테스트를 개발합니다.",
+        "Ctrl-C 처리를 포함해 macOS와 Windows의 기능을 Linux와 동등하게 개선합니다.",
+        "signal API의 사용성을 개선하고 카운터, 폼, pandas 테이블 예제를 만듭니다.",
+        "문서, 설정 가이드와 예제를 작성하고 개선합니다.",
+        "Rust 툴체인 필요성을 줄이기 위해 사전 빌드된 Python wheel을 검토합니다."
+      ]
+    }
+  ]
 }

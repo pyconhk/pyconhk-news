@@ -69,8 +69,30 @@
     {
       "id": "project-list",
       "question": "今年はどのプロジェクトやリードが参加しますか？",
-      "answer": "プロジェクト、スプリントリード、詳しい進め方は現在調整中です。確定した情報とプロジェクトごとの環境構築手順は、準備ができ次第このページに掲載します。"
+      "answer": "Luciano Scarpulla が nsh-py：素の Python で作るネイティブデスクトップ UI をリードすることが決まっています。参加方法は Sprint Day のプロジェクト目標をご覧ください。ほかのプロジェクトや Python 専用の環境構築情報は確認後に掲載します。"
     }
   ],
-  "projects": []
+  "projects": [
+    {
+      "id": "nsh-py",
+      "status": "published",
+      "title": "nsh-py：素の Python で作るネイティブデスクトップ UI",
+      "description": "Luciano と Native Shell（NSH）の Python バインディングに取り組みます。Sprint の目標は、スタイル付きコンポーネント、サンプル、macOS／Windows／Linux 対応の改善です。リポジトリのリンク先は NSH の上流プロジェクトです。Python 専用の環境構築手順は、準備ができ次第掲載します。参加者それぞれの PR がマージされることを目指します。\n\n経験を問わず歓迎します。サンプルやドキュメントの作成でも参加でき、Rust は任意です。macOS、Windows または Linux のノートパソコンを持参してください。",
+      "lead": "Luciano Scarpulla",
+      "repositoryUrl": "https://github.com/longbridge/nsh",
+      "setupUrl": "",
+      "skills": [
+        "Python（経験不問）",
+        "サンプルとドキュメント",
+        "Rust（任意）"
+      ],
+      "contributions": [
+        "スタイル付きのバッジ、アラート、入力欄、リスト、レイアウトとヘッドレステストを作成する。",
+        "Ctrl-C の処理を含め、macOS と Windows の機能を Linux と同等にする改善に取り組む。",
+        "signal API の使い勝手を改善し、カウンター、フォーム、pandas テーブルのサンプルを作成する。",
+        "ドキュメント、環境構築ガイド、サンプルを作成・改善する。",
+        "Rust ツールチェーンへの依存を減らすため、ビルド済み Python wheel を検討する。"
+      ]
+    }
+  ]
 }
