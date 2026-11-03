@@ -81,6 +81,8 @@
       "lead": "Luciano Scarpulla",
       "repositoryUrl": "https://github.com/longbridge/nsh",
       "setupUrl": "",
+      "level": "all-levels",
+      "discordUrl": "",
       "skills": [
         "Python(모든 수준)",
         "예제와 문서",
