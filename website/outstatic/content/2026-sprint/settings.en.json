@@ -83,11 +83,7 @@
       "setupUrl": "",
       "level": "all-levels",
       "discordUrl": "",
-      "skills": [
-        "Python (any level)",
-        "Examples and documentation",
-        "Rust (optional)"
-      ],
+      "skills": [],
       "contributions": [
         "Develop styled badges, alerts, inputs, lists and layouts, with headless tests.",
         "Work toward macOS and Windows parity with Linux, including Ctrl-C handling.",

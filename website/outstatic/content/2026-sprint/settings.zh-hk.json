@@ -1,7 +1,7 @@
 {
   "slug": "settings",
   "status": "published",
-  "intro": "11 月 15 日星期日，一齊參加 PyCon HK 2026 衝刺開發日，同社群一齊做 Python 同開源項目。歡迎你按自己嘅經驗出一分力，一齊交流同學習。呢個係協作活動，唔係導師逐步授課嘅工作坊。\n\n我哋仲確認緊項目同詳細安排。想知點樣參與同準備，可以先睇衝刺開發常見問題。免費入場，請同大會日分別登記門票。\n\n現場報到時間：2026 年 11 月 15 日上午 10:00（香港時間，UTC+8）。",
+  "intro": "11 月 15 日（星期日）係 PyCon HK 2026 Sprint Day。揀個你有興趣嘅 Python 或開源項目，跟住 Sprint Lead 同其他參加者一齊落手做。\n\n新手都歡迎，寫 example、改文件都可以參與。去之前可以睇吓常見問題，了解要準備啲咩。Sprint Day 免費入場，但要同 Conference Day 分開登記門票。\n\n報到時間：2026 年 11 月 15 日上午 10:00（香港時間，UTC+8）。",
   "date": "2026-11-15",
   "location": "香港資訊科技學院（HKIIT），香港專業教育學院（IVE）（李惠利）校園，將軍澳",
   "registrationUrl": "https://www.eventbrite.hk/e/pycon-hk-2026-tickets-1998483131845",
@@ -69,31 +69,27 @@
     {
       "id": "project-list",
       "question": "今年有邊啲項目同 Sprint Lead？",
-      "answer": "已確認 Luciano Scarpulla 會帶領 nsh-py：用純 Python 寫原生桌面介面。可以睇 Sprint Day 項目目標，了解點樣參與。更多項目同 Python 專用安裝資訊會喺確認後補上。"
+      "answer": "今年有 Luciano Scarpulla 帶嘅 nsh-py，會一齊用 Python 整 desktop app。詳細會做啲咩、要準備啲咩，可以睇返 Sprint Day 個頁面。其他項目確認後會再加上去。"
     }
   ],
   "projects": [
     {
       "id": "nsh-py",
       "status": "published",
-      "title": "nsh-py：用純 Python 寫原生桌面介面",
-      "description": "同 Luciano 一齊開發 Native Shell（NSH）嘅 Python 綁定，今次 Sprint 目標包括有樣式嘅介面元件、示例同 macOS／Windows／Linux 支援。儲存庫連結指向 NSH 上游項目。Python 專用安裝指引會喺資料齊備後補上。希望每位參加者都可以貢獻一個獲合併嘅 PR。\n\n任何程度都歡迎，寫示例同文件都可以參與；識 Rust 唔係必要。請帶備運行 macOS、Windows 或 Linux 嘅手提電腦。",
+      "title": "nsh-py：用 Python 整 desktop app",
+      "description": "今次同 Luciano 一齊做 Native Shell（NSH）嘅 Python bindings，用 Python 整 native desktop app。會一齊加 UI components、寫 examples，同埋改善 macOS、Windows 同 Linux 嘅支援。希望當日每個人都可以完成一個 PR，merge 返入項目。\n\nPython 新手都歡迎，可以由寫 example、改文件入手，唔使識 Rust；想試 Rust 嘅話，亦有相關工作。請帶部 macOS、Windows 或 Linux 手提電腦。\n\n下面個 GitHub link 係 NSH 主項目，Python 版嘅 setup 指引會遲啲補上。",
       "lead": "Luciano Scarpulla",
       "repositoryUrl": "https://github.com/longbridge/nsh",
       "setupUrl": "",
       "level": "all-levels",
       "discordUrl": "",
-      "skills": [
-        "Python（任何程度）",
-        "示例同文件",
-        "Rust（可選）"
-      ],
+      "skills": [],
       "contributions": [
-        "開發有樣式嘅徽章、提示、輸入框、列表同版面配置，並加入無介面測試。",
-        "改善 macOS 同 Windows，令功能向 Linux 看齊，包括 Ctrl-C 處理。",
-        "改善 signal API 嘅易用性，加入計數器、表單同 pandas 表格示例。",
-        "撰寫同改善文件、安裝指引同示例。",
-        "探索預先編譯嘅 Python wheel，減少對 Rust 工具鏈嘅需要。"
+        "加多啲 UI components，例如 badge、alert、input、list 同 layout，每個都補返 headless test。",
+        "改善 macOS 同 Windows 嘅支援，追返 Linux 已有嘅功能，包括 Ctrl-C 處理。",
+        "執順 signal API，再整啲 counter、form 同 pandas table examples。",
+        "補返文件、setup 指引同 examples，等新手易啲上手。",
+        "整 prebuilt Python wheels，等大家唔使自己裝 Rust toolchain。"
       ]
     }
   ]
