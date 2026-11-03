@@ -57,6 +57,15 @@ runs:
             cp -R "$source" website-code/website/outstatic/content/
           fi
         done
+        sprint_source="$NEWS_DIRECTORY/website/outstatic/content/2026-sprint"
+        if [ -d "$sprint_source" ]; then
+          test -f website-code/website/src/lib/sprint-content.ts || {
+            echo 'Sprint content requires the trusted website Sprint validator before publication.' >&2
+            exit 1
+          }
+          rm -rf website-code/website/outstatic/content/2026-sprint
+          cp -R "$sprint_source" website-code/website/outstatic/content/
+        fi
         if [ -d "$NEWS_DIRECTORY/website/public/outstatic/images" ]; then
           cp -R "$NEWS_DIRECTORY/website/public/outstatic/images/." \
             website-code/website/public/outstatic/images/
