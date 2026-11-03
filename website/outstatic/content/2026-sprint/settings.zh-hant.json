@@ -69,8 +69,30 @@
     {
       "id": "project-list",
       "question": "今年有哪些專案及 Sprint Lead？",
-      "answer": "我們正確認專案、Sprint Lead 及詳細安排。資料齊備後，將於本頁公布已確認資訊與個別專案的安裝指引。"
+      "answer": "已確認 Luciano Scarpulla 將帶領 nsh-py：以純 Python 建立原生桌面介面。請參閱 Sprint Day 專案目標，了解參與方式。更多專案及 Python 專用安裝資訊將於確認後公布。"
     }
   ],
-  "projects": []
+  "projects": [
+    {
+      "id": "nsh-py",
+      "status": "published",
+      "title": "nsh-py：以純 Python 建立原生桌面介面",
+      "description": "與 Luciano 一起開發 Native Shell（NSH）的 Python 綁定，Sprint 目標包括具樣式的介面元件、範例及 macOS／Windows／Linux 支援。儲存庫連結指向 NSH 上游專案。Python 專用安裝指引將於資料齊備後公布。目標是讓每位參加者貢獻一個獲合併的 PR。\n\n歡迎任何程度的參加者，也可透過範例與文件作出貢獻；Rust 為可選技能。請攜帶運行 macOS、Windows 或 Linux 的手提電腦。",
+      "lead": "Luciano Scarpulla",
+      "repositoryUrl": "https://github.com/longbridge/nsh",
+      "setupUrl": "",
+      "skills": [
+        "Python（任何程度）",
+        "範例與文件",
+        "Rust（可選）"
+      ],
+      "contributions": [
+        "開發具樣式的徽章、提示、輸入框、列表及版面配置，並加入無介面測試。",
+        "改善 macOS 與 Windows，使功能與 Linux 看齊，包括 Ctrl-C 處理。",
+        "改善 signal API 的易用性，建立計數器、表單及 pandas 表格範例。",
+        "撰寫及改善文件、安裝指引與範例。",
+        "探索預先編譯的 Python wheel，減少對 Rust 工具鏈的需要。"
+      ]
+    }
+  ]
 }

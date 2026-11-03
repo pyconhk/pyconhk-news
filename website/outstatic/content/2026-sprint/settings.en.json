@@ -69,8 +69,30 @@
     {
       "id": "project-list",
       "question": "Which projects and Sprint Leads are taking part?",
-      "answer": "We are finalizing the projects, Sprint Leads and detailed arrangements. Confirmed information and project-specific setup instructions will be added to this page when available."
+      "answer": "Luciano Scarpulla is confirmed as lead for nsh-py: native desktop UIs in plain Python. See the Sprint Day project goals for ways to contribute. More projects and Python-specific setup details will be added when confirmed."
     }
   ],
-  "projects": []
+  "projects": [
+    {
+      "id": "nsh-py",
+      "status": "published",
+      "title": "nsh-py: native desktop UIs in plain Python",
+      "description": "Join Luciano to work on Python bindings for Native Shell (NSH), with Sprint goals covering styled components, examples and macOS/Windows/Linux support. The repository link is the upstream NSH project. Python-specific setup instructions will be added when available. The aim is for each participant to contribute a merged PR.\n\nAll levels are welcome, including examples and documentation; Rust is optional. Bring a macOS, Windows or Linux laptop.",
+      "lead": "Luciano Scarpulla",
+      "repositoryUrl": "https://github.com/longbridge/nsh",
+      "setupUrl": "",
+      "skills": [
+        "Python (any level)",
+        "Examples and documentation",
+        "Rust (optional)"
+      ],
+      "contributions": [
+        "Develop styled badges, alerts, inputs, lists and layouts, with headless tests.",
+        "Work toward macOS and Windows parity with Linux, including Ctrl-C handling.",
+        "Improve signal API ergonomics and build counter, form and pandas-table examples.",
+        "Write and improve documentation, setup guides and examples.",
+        "Explore prebuilt Python wheels to reduce the need for a Rust toolchain."
+      ]
+    }
+  ]
 }
