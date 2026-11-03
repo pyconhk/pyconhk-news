@@ -9,6 +9,8 @@ import { assertBoundary, assertCurrentTarget, assertIntakeBoundary, isNewsFile, 
 
 const article = 'website/outstatic/content/2026-posts/story.en.mdx';
 const secondArticle = 'website/outstatic/content/2026-posts/other.en.mdx';
+const sprintLocales = ['en', 'zh-hk', 'zh-hant', 'zh-hans', 'ja', 'ko'];
+const sprintFile = locale => `website/outstatic/content/2026-sprint/settings.${locale}.json`;
 
 function fixture(t) {
   const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'news-promotion-test-'));
@@ -49,6 +51,83 @@ function remoteFixture(t) {
   };
   return { ...f, remoteHead, edit };
 }
+
+test('Sprint editing allows exactly six canonical settings paths without opening conference or code paths', () => {
+  for (const locale of sprintLocales) assert.equal(isNewsFile(sprintFile(locale)), true);
+  for (const file of [
+    sprintFile('fr'), 'website/outstatic/content/2025-sprint/settings.en.json',
+    'website/outstatic/content/2026-sprint/other.en.json',
+    'website/outstatic/content/2026-sprint/settings.en.json.js',
+    'website/outstatic/content/2026-sprint/nested/settings.en.json',
+    'website/outstatic/content/2026-conference/settings.en.json',
+    'website/src/lib/sprint-content.ts',
+  ]) assert.equal(isNewsFile(file), false, file);
+});
+
+test('a Sprint-only test CMS save prepares a test candidate without changing production', t => {
+  const f = fixture(t);
+  const production = f.git('rev-parse', 'main');
+  f.git('switch', 'cms-test');
+  for (const locale of sprintLocales) f.write(sprintFile(locale), JSON.stringify({ slug: 'settings', status: 'draft', intro: `Saved ${locale}` }));
+  const saved = f.commit('Save structured Sprint translations');
+  const candidate = prepareCandidate(f.directory, 'cms-test', 'test');
+  assert.equal(candidate.sourceSha, saved);
+  for (const locale of sprintLocales) assert.equal(JSON.parse(f.git('show', `${candidate.candidateSha}:${sprintFile(locale)}`)).intro, `Saved ${locale}`);
+  assert.equal(f.git('rev-parse', 'main'), production);
+  assert.throws(() => prepareCandidate(f.directory, 'cms-test', 'main'), /Invalid publication route/u);
+});
+
+for (const removed of [['ko'], sprintLocales]) {
+  test(`deleting ${removed.length} canonical Sprint settings is refused before promotion`, t => {
+    const f = fixture(t);
+    f.git('switch', 'test');
+    for (const locale of sprintLocales) f.write(sprintFile(locale), '{"slug":"settings","status":"draft"}');
+    const published = f.commit('Seed test Sprint singleton');
+    f.git('switch', 'cms-test'); f.git('merge', '--ff-only', 'test');
+    for (const locale of removed) fs.unlinkSync(path.join(f.directory, sprintFile(locale)));
+    const deleted = f.commit('Attempt to delete Sprint settings');
+    assert.throws(() => prepareCandidate(f.directory, 'cms-test', 'test'), /Canonical Sprint settings cannot be deleted/u);
+    assert.throws(() => assertBoundary(f.directory, published, deleted, true), /Canonical Sprint settings cannot be deleted/u, 'maintenance permission cannot remove the singleton either');
+    assert.equal(f.git('rev-parse', 'test'), published);
+    assert.equal(f.git('rev-parse', 'cms-test'), deleted);
+  });
+}
+
+function overlayFixture(t) {
+  const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'news-sprint-overlay-'));
+  t.after(() => fs.rmSync(directory, { recursive: true, force: true }));
+  const write = (name, contents) => {
+    const absolute = path.join(directory, name);
+    fs.mkdirSync(path.dirname(absolute), { recursive: true }); fs.writeFileSync(absolute, contents);
+  };
+  const action = fs.readFileSync(new URL('./actions/validate-news/action.yml', import.meta.url), 'utf8');
+  const section = action.split('    - name: Overlay proposed News content\n')[1]?.split('\n    - name:')[0];
+  assert.ok(section, 'test executes the actual trusted overlay step');
+  const script = section.split('      run: |\n')[1].split('\n').map(line => line.replace(/^        /u, '')).join('\n');
+  const run = () => execFileSync('bash', ['-euc', script], { cwd: directory, env: { ...process.env, NEWS_DIRECTORY: path.join(directory, 'news') }, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] });
+  return { directory, write, run };
+}
+
+test('pre-bootstrap News snapshots preserve the website Sprint seed without requiring new production code', t => {
+  const f = overlayFixture(t);
+  f.write(`website-code/${sprintFile('en')}`, 'bootstrap seed');
+  f.write(`news/${article}`, 'existing News');
+  assert.doesNotThrow(f.run);
+  assert.equal(fs.readFileSync(path.join(f.directory, `website-code/${sprintFile('en')}`), 'utf8'), 'bootstrap seed');
+});
+
+test('Sprint overlay fails closed on an old trusted website validator, then replaces the whole seed', t => {
+  const f = overlayFixture(t);
+  f.write(`website-code/${sprintFile('en')}`, 'old seed');
+  f.write('website-code/website/outstatic/content/2026-sprint/stale.json', 'stale seed');
+  for (const locale of sprintLocales) f.write(`news/${sprintFile(locale)}`, JSON.stringify({ slug: 'settings', status: 'draft', intro: `CMS ${locale}` }));
+  assert.throws(f.run, /trusted website Sprint validator/u);
+  assert.equal(fs.readFileSync(path.join(f.directory, `website-code/${sprintFile('en')}`), 'utf8'), 'old seed');
+  f.write('website-code/website/src/lib/sprint-content.ts', '// Trusted validator supplied by the website branch.\n');
+  f.run();
+  for (const locale of sprintLocales) assert.equal(JSON.parse(fs.readFileSync(path.join(f.directory, `website-code/${sprintFile(locale)}`), 'utf8')).intro, `CMS ${locale}`);
+  assert.equal(fs.existsSync(path.join(f.directory, 'website-code/website/outstatic/content/2026-sprint/stale.json')), false);
+});
 
 test('unchanged and already promoted source snapshots do nothing', t => {
   const f = fixture(t);

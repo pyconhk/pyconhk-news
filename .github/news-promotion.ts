@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 export const routes = { cms: 'main', 'cms-test': 'test' };
 export const intakeRoutes = { main: 'cms', test: 'cms-test' };
 const repository = 'pyconhk/pyconhk-news';
+const sprintFile = /^website\/outstatic\/content\/2026-sprint\/settings\.(en|zh-hk|zh-hant|zh-hans|ja|ko)\.json$/u;
 const maintenanceFiles = new Set([
   'README.md', '.github/CODEOWNERS', '.github/news-promotion.ts',
   '.github/news-promotion.test.ts', '.github/actions/validate-news/action.yml',
@@ -15,6 +16,7 @@ const maintenanceFiles = new Set([
 export function isNewsFile(file) {
   return /^website\/outstatic\/content\/2025-posts\/[^/]+\.(en|zh-hk|zh-hant|zh-hans|ja)\.mdx$/u.test(file)
     || /^website\/outstatic\/content\/2026-posts\/[^/]+\.(en|zh-hk|zh-hant|zh-hans|ja|ko)\.mdx$/u.test(file)
+    || sprintFile.test(file)
     || /^website\/public\/outstatic\/images\/[^/]+\.(png|jpg|jpeg|webp|gif|avif)$/u.test(file);
 }
 
@@ -42,6 +44,9 @@ export function assertBoundary(directory, base, head, allowMaintenance = false) 
   const allowed = file => isNewsFile(file) || (allowMaintenance && maintenanceFiles.has(file));
   const invalid = changedFiles(directory, base, head).filter(file => !allowed(file));
   if (invalid.length) throw new Error(`Changes outside News content: ${invalid.join(', ')}`);
+  const deletedSprint = git(directory, ['diff', '--no-renames', '--diff-filter=D', '--name-only', '-z', base, head])
+    .split('\0').filter(file => sprintFile.test(file));
+  if (deletedSprint.length) throw new Error(`Canonical Sprint settings cannot be deleted; use draft status to unpublish: ${deletedSprint.join(', ')}`);
   for (const entry of git(directory, ['ls-tree', '-r', '-z', head]).split('\0').filter(Boolean)) {
     const [metadata, file] = entry.split('\t');
     const [mode] = metadata.split(' ');
