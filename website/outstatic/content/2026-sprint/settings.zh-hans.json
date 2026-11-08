@@ -90,7 +90,8 @@
         "改善 signal API 的易用性，构建计数器、表单及 pandas 表格示例。",
         "撰写及改善文档、安装指南与示例。",
         "探索预编译的 Python wheel，减少对 Rust 工具链的需求。"
-      ]
+      ],
+      "leadProfileUrl": "https://www.linkedin.com/in/luciano-scarpulla"
     },
     {
       "id": "minimind",
@@ -100,7 +101,7 @@
       "lead": "Sam Lau",
       "repositoryUrl": "https://github.com/jingyaogong/minimind",
       "setupUrl": "",
-      "level": "",
+      "level": "intermediate",
       "discordUrl": "",
       "skills": [],
       "contributions": [

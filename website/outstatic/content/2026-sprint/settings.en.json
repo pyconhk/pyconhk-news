@@ -90,7 +90,8 @@
         "Improve signal API ergonomics and build counter, form and pandas-table examples.",
         "Write and improve documentation, setup guides and examples.",
         "Explore prebuilt Python wheels to reduce the need for a Rust toolchain."
-      ]
+      ],
+      "leadProfileUrl": "https://www.linkedin.com/in/luciano-scarpulla"
     },
     {
       "id": "minimind",
@@ -100,7 +101,7 @@
       "lead": "Sam Lau",
       "repositoryUrl": "https://github.com/jingyaogong/minimind",
       "setupUrl": "",
-      "level": "",
+      "level": "intermediate",
       "discordUrl": "",
       "skills": [],
       "contributions": [
