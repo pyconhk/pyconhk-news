@@ -90,7 +90,8 @@
         "執順 signal API，再整啲 counter、form 同 pandas table examples。",
         "補返文件、setup 指引同 examples，等新手易啲上手。",
         "整 prebuilt Python wheels，等大家唔使自己裝 Rust toolchain。"
-      ]
+      ],
+      "leadProfileUrl": "https://www.linkedin.com/in/luciano-scarpulla"
     },
     {
       "id": "minimind",
@@ -100,7 +101,7 @@
       "lead": "Sam Lau",
       "repositoryUrl": "https://github.com/jingyaogong/minimind",
       "setupUrl": "",
-      "level": "",
+      "level": "intermediate",
       "discordUrl": "",
       "skills": [],
       "contributions": [

@@ -90,7 +90,8 @@
         "signal API の使い勝手を改善し、カウンター、フォーム、pandas テーブルのサンプルを作成する。",
         "ドキュメント、環境構築ガイド、サンプルを作成・改善する。",
         "Rust ツールチェーンへの依存を減らすため、ビルド済み Python wheel を検討する。"
-      ]
+      ],
+      "leadProfileUrl": "https://www.linkedin.com/in/luciano-scarpulla"
     },
     {
       "id": "minimind",
@@ -100,7 +101,7 @@
       "lead": "Sam Lau",
       "repositoryUrl": "https://github.com/jingyaogong/minimind",
       "setupUrl": "",
-      "level": "",
+      "level": "intermediate",
       "discordUrl": "",
       "skills": [],
       "contributions": [
