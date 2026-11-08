@@ -69,7 +69,7 @@
     {
       "id": "project-list",
       "question": "今年有哪些项目及 Sprint Lead？",
-      "answer": "已确认 Luciano Scarpulla 将带领 nsh-py：用纯 Python 构建原生桌面界面。请参阅 Sprint Day 项目目标，了解参与方式。更多项目及 Python 专用安装信息将在确认后公布。"
+      "answer": "Luciano Scarpulla 带领 nsh-py，使用纯 Python 构建原生桌面界面。Sam Lau 带领 MiniMind 大型语言模型训练项目。请参阅 Sprint Day 页面的项目目标，了解如何参与。"
     }
   ],
   "projects": [
@@ -90,6 +90,23 @@
         "改善 signal API 的易用性，构建计数器、表单及 pandas 表格示例。",
         "撰写及改善文档、安装指南与示例。",
         "探索预编译的 Python wheel，减少对 Rust 工具链的需求。"
+      ]
+    },
+    {
+      "id": "minimind",
+      "status": "published",
+      "title": "使用 MiniMind 训练大型语言模型",
+      "description": "使用轻量框架 MiniMind，以较低成本学习训练小型语言模型。MiniMind 的模型架构与 Qwen3 对齐。",
+      "lead": "Sam Lau",
+      "repositoryUrl": "https://github.com/jingyaogong/minimind",
+      "setupUrl": "",
+      "level": "",
+      "discordUrl": "",
+      "skills": [],
+      "contributions": [
+        "寻找或创建训练数据集。",
+        "训练自己的语言模型。",
+        "尝试与训练完成的模型对话。"
       ]
     }
   ]

@@ -69,7 +69,7 @@
     {
       "id": "project-list",
       "question": "Which projects and Sprint Leads are taking part?",
-      "answer": "Luciano Scarpulla is confirmed as lead for nsh-py: native desktop UIs in plain Python. See the Sprint Day project goals for ways to contribute. More projects and Python-specific setup details will be added when confirmed."
+      "answer": "Luciano Scarpulla leads nsh-py, which brings native desktop UIs to plain Python. Sam Lau leads Training an LLM with MiniMind. See the project goals on the Sprint Day page for ways to take part."
     }
   ],
   "projects": [
@@ -90,6 +90,23 @@
         "Improve signal API ergonomics and build counter, form and pandas-table examples.",
         "Write and improve documentation, setup guides and examples.",
         "Explore prebuilt Python wheels to reduce the need for a Rust toolchain."
+      ]
+    },
+    {
+      "id": "minimind",
+      "status": "published",
+      "title": "Training an LLM with MiniMind",
+      "description": "Use MiniMind, a lightweight framework with a model architecture aligned with Qwen3, to learn how to train a small language model at low cost.",
+      "lead": "Sam Lau",
+      "repositoryUrl": "https://github.com/jingyaogong/minimind",
+      "setupUrl": "",
+      "level": "",
+      "discordUrl": "",
+      "skills": [],
+      "contributions": [
+        "Find or create datasets.",
+        "Train our own language model.",
+        "Try chatting with the trained model."
       ]
     }
   ]
