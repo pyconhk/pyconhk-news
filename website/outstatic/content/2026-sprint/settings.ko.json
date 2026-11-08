@@ -69,7 +69,7 @@
     {
       "id": "project-list",
       "question": "올해 어떤 프로젝트와 스프린트 리드가 참가하나요?",
-      "answer": "Luciano Scarpulla가 nsh-py: 순수 Python으로 만드는 네이티브 데스크톱 UI를 이끌기로 확정되었습니다. 참여 방법은 Sprint Day 프로젝트 목표를 확인해 주세요. 추가 프로젝트와 Python 전용 설정 정보는 확인 후 안내합니다."
+      "answer": "Luciano Scarpulla는 순수 Python으로 네이티브 데스크톱 UI를 만드는 nsh-py를 이끕니다. Sam Lau은 MiniMind를 사용한 대규모 언어 모델 학습 프로젝트를 이끕니다. 참여 방법은 Sprint Day 페이지의 프로젝트 목표를 확인해 주세요."
     }
   ],
   "projects": [
@@ -90,6 +90,23 @@
         "signal API의 사용성을 개선하고 카운터, 폼, pandas 테이블 예제를 만듭니다.",
         "문서, 설정 가이드와 예제를 작성하고 개선합니다.",
         "Rust 툴체인 필요성을 줄이기 위해 사전 빌드된 Python wheel을 검토합니다."
+      ]
+    },
+    {
+      "id": "minimind",
+      "status": "published",
+      "title": "MiniMind로 대규모 언어 모델 학습하기",
+      "description": "Qwen3 계열에 맞춘 모델 구조를 채택한 경량 프레임워크 MiniMind를 사용해 적은 비용으로 소형 언어 모델을 학습시키는 방법을 익힙니다.",
+      "lead": "Sam Lau",
+      "repositoryUrl": "https://github.com/jingyaogong/minimind",
+      "setupUrl": "",
+      "level": "",
+      "discordUrl": "",
+      "skills": [],
+      "contributions": [
+        "학습용 데이터셋을 찾거나 만듭니다.",
+        "우리만의 언어 모델을 학습시킵니다.",
+        "학습한 모델과 대화해 봅니다."
       ]
     }
   ]

@@ -69,7 +69,7 @@
     {
       "id": "project-list",
       "question": "今年有邊啲項目同 Sprint Lead？",
-      "answer": "今年有 Luciano Scarpulla 帶嘅 nsh-py，會一齊用 Python 整 desktop app。詳細會做啲咩、要準備啲咩，可以睇返 Sprint Day 個頁面。其他項目確認後會再加上去。"
+      "answer": "Luciano Scarpulla 會帶 nsh-py，一齊用 Python 整 desktop app。Sam Lau 會帶大家用 MiniMind 訓練大型語言模型。想知點參與，可以睇返 Sprint Day 頁面嘅項目目標。"
     }
   ],
   "projects": [
@@ -90,6 +90,23 @@
         "執順 signal API，再整啲 counter、form 同 pandas table examples。",
         "補返文件、setup 指引同 examples，等新手易啲上手。",
         "整 prebuilt Python wheels，等大家唔使自己裝 Rust toolchain。"
+      ]
+    },
+    {
+      "id": "minimind",
+      "status": "published",
+      "title": "用 MiniMind 訓練大型語言模型",
+      "description": "用 MiniMind 一齊試吓訓練細型語言模型。MiniMind 係個輕量框架，模型架構同 Qwen3 對齊，可以用較低成本學習點樣訓練 LLM。",
+      "lead": "Sam Lau",
+      "repositoryUrl": "https://github.com/jingyaogong/minimind",
+      "setupUrl": "",
+      "level": "",
+      "discordUrl": "",
+      "skills": [],
+      "contributions": [
+        "搵或者整訓練用嘅資料集。",
+        "訓練我哋自己嘅語言模型。",
+        "試吓同訓練好嘅模型傾偈。"
       ]
     }
   ]
