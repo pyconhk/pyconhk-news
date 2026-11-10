@@ -1,0 +1,114 @@
+{
+  "slug": "settings",
+  "status": "published",
+  "intro": "11 月 15 日（星期日）係 PyCon HK 2026 Sprint Day。揀個你有興趣嘅 Python 或開源項目，跟住 Sprint Lead 同其他參加者一齊落手做。\n\n新手都歡迎，寫 example、改文件都可以參與。去之前可以睇吓常見問題，了解要準備啲咩。Sprint Day 免費入場，但要同 Conference Day 分開登記門票。\n\n報到時間：2026 年 11 月 15 日上午 10:00（香港時間，UTC+8）。",
+  "date": "2026-11-15",
+  "location": "香港資訊科技學院（HKIIT），香港專業教育學院（IVE）（李惠利）校園，將軍澳",
+  "registrationUrl": "https://www.eventbrite.hk/e/pycon-hk-2026-tickets-1998483131845",
+  "items": [],
+  "startTime": "",
+  "endTime": "",
+  "proposalUrl": "https://cfp.pycon.hk/pyconhk2026/cfp",
+  "proposalDeadline": "",
+  "qa": [
+    {
+      "id": "what-is-sprint",
+      "question": "衝刺開發（Development Sprint）係咩？",
+      "answer": "衝刺開發係一個大家一齊做開源項目嘅活動。你可以同項目維護者及其他貢獻者合作，完成實際任務、交流經驗，邊做邊學。貢獻唔一定係寫程式，亦可以係測試、文件、翻譯，或者項目需要嘅其他工作。\n\n呢個係社群協作活動，唔係跟住固定教材逐步授課嘅工作坊。請按自己嘅經驗，揀適合嘅方式出一分力。"
+    },
+    {
+      "id": "what-happens",
+      "question": "當日會做啲咩？",
+      "answer": "你可以揀有興趣嘅項目，同領隊或其他貢獻者傾吓適合做咩任務，再一齊動手。項目資料公布後，先睇返參與指引同安裝步驟。2026 年嘅詳細時間表同項目安排會喺確認後公布。"
+    },
+    {
+      "id": "sprint-vs-conference",
+      "question": "衝刺開發日同大會日有咩分別？",
+      "answer": "11 月 14 日大會日以演講、分享同社群活動為主；11 月 15 日衝刺開發日就以一齊做 Python 同開源項目為主。兩日係獨立活動，要分別登記門票。"
+    },
+    {
+      "id": "who-should-attend",
+      "question": "邊啲人適合參加？",
+      "answer": "對 Python、開源或者一齊學習有興趣都歡迎，無論你已經有開源貢獻經驗，定係準備做第一次貢獻。你唔需要自備項目，可以按興趣揀合適嘅項目同任務。"
+    },
+    {
+      "id": "beginners",
+      "question": "Python 新手都參加得？",
+      "answer": "得，活動歡迎新手同有經驗嘅貢獻者。你可以同領隊講吓自己試過啲咩、想學啲咩。視乎項目需要，入門任務可能係整理文件、翻譯、重現問題，或者改少量程式碼；實際任務同支援安排因項目而異。"
+    },
+    {
+      "id": "preparation",
+      "question": "要帶啲咩？出發前要準備啲咩？",
+      "answer": "帶一部可以運行所選項目工具嘅手提電腦、充電器，同你需要嘅轉接器。項目資料公布後，先睇 README、貢獻指引同安裝步驟，亦準備好項目用到嘅帳號，例如 GitHub。唔同項目嘅要求會有分別，請按個別項目指引準備。"
+    },
+    {
+      "id": "observe",
+      "question": "可唔可以先旁觀，了解吓再參與？",
+      "answer": "如果你想先旁觀，請先登記衝刺開發日門票，再同項目領隊或籌辦團隊傾吓點樣加入小組。你可以介紹自己嘅興趣同經驗，了解項目點樣運作，再一齊決定合適嘅參與方式。亦請尊重小組嘅工作空間同討論。"
+    },
+    {
+      "id": "join-or-leave",
+      "question": "如果要遲到或者早走，應該點安排？",
+      "answer": "請預先同項目領隊或籌辦團隊協調，話畀小組知你預計幾時到、幾時走，方便安排任務同交接。出發前亦記得睇返已確認嘅時間表同入場指引。"
+    },
+    {
+      "id": "fee-and-registration",
+      "question": "衝刺開發日係咪免費？要另外登記門票？",
+      "answer": "PyCon HK 2026 免費入場，但 11 月 15 日衝刺開發日同 11 月 14 日大會日要分別登記門票。請用登記按鈕，揀返你打算參加嘅日子。自願資助、T 恤同 PyNight 係另外嘅選項，唔影響衝刺開發日免費入場。"
+    },
+    {
+      "id": "project-eligibility",
+      "question": "可唔可以提議自己嘅項目？",
+      "answer": "可以，2026 年公告正徵集 Python 同開源衝刺項目。請透過項目同領隊徵集表格，介紹你嘅項目、想一齊完成嘅工作，同其他人可以點樣貢獻。提交提案唔代表已確認入選大會議程。\n\nSprint 提案截止時間係香港時間（UTC+8）2026 年 11 月 14 日 23:59。"
+    },
+    {
+      "id": "sprint-leads",
+      "question": "點樣報名做 Sprint Lead？",
+      "answer": "請透過項目同領隊徵集表格提交。領隊會幫手介紹項目、講解安裝同貢獻流程，並整理適合大家一齊做嘅任務。提交時請寫清楚參加者要預先準備啲咩，同你可以支援邊類貢獻。"
+    },
+    {
+      "id": "project-list",
+      "question": "今年有邊啲項目同 Sprint Lead？",
+      "answer": "Luciano Scarpulla 會帶 nsh-py，一齊用 Python 整 desktop app。Sam Lau 會帶大家用 MiniMind 訓練大型語言模型。想知點參與，可以睇返 Sprint Day 頁面嘅項目目標。"
+    }
+  ],
+  "projects": [
+    {
+      "id": "nsh-py",
+      "status": "published",
+      "title": "nsh-py：用 Python 整 desktop app",
+      "description": "今次同 Luciano 一齊做 Native Shell（NSH）嘅 Python bindings，用 Python 整 native desktop app。會一齊加 UI components、寫 examples，同埋改善 macOS、Windows 同 Linux 嘅支援。希望當日每個人都可以完成一個 PR，merge 返入項目。\n\nPython 新手都歡迎，可以由寫 example、改文件入手，唔使識 Rust；想試 Rust 嘅話，亦有相關工作。請帶部 macOS、Windows 或 Linux 手提電腦。\n\n下面個 GitHub link 係 NSH 主項目，Python 版嘅 setup 指引會遲啲補上。",
+      "lead": "Luciano Scarpulla",
+      "repositoryUrl": "https://github.com/longbridge/nsh",
+      "setupUrl": "",
+      "level": "all-levels",
+      "discordUrl": "",
+      "skills": [],
+      "contributions": [
+        "加多啲 UI components，例如 badge、alert、input、list 同 layout，每個都補返 headless test。",
+        "改善 macOS 同 Windows 嘅支援，追返 Linux 已有嘅功能，包括 Ctrl-C 處理。",
+        "執順 signal API，再整啲 counter、form 同 pandas table examples。",
+        "補返文件、setup 指引同 examples，等新手易啲上手。",
+        "整 prebuilt Python wheels，等大家唔使自己裝 Rust toolchain。"
+      ],
+      "leadProfileUrl": "https://www.linkedin.com/in/luciano-scarpulla"
+    },
+    {
+      "id": "minimind",
+      "status": "published",
+      "title": "用 MiniMind 訓練大型語言模型",
+      "description": "用 MiniMind 一齊試吓訓練細型語言模型。MiniMind 係個輕量框架，模型架構同 Qwen3 對齊，可以用較低成本學習點樣訓練 LLM。",
+      "lead": "Sam Lau",
+      "repositoryUrl": "https://github.com/jingyaogong/minimind",
+      "setupUrl": "",
+      "level": "intermediate",
+      "discordUrl": "",
+      "skills": [],
+      "contributions": [
+        "搵或者整訓練用嘅資料集。",
+        "訓練我哋自己嘅語言模型。",
+        "試吓同訓練好嘅模型傾偈。"
+      ]
+    }
+  ]
+}
