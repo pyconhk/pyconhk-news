@@ -65,7 +65,7 @@
     {
       "id": "project-list",
       "question": "今年有哪些项目及 Sprint Lead？",
-      "answer": "Luciano Scarpulla 带领 nsh-py，使用纯 Python 构建原生桌面界面。Sam Lau 带领 MiniMind 大型语言模型训练项目。Soojin Yoon (Luna) 带领 Django 冲刺开发。请参阅 Sprint Day 页面的项目目标，了解如何参与。"
+      "answer": "Luciano Scarpulla 带领 nsh-py，使用纯 Python 构建原生桌面界面。Sam Lau 带领 MiniMind 大型语言模型训练项目。Soojin Yoon (Luna) 带领 Django 冲刺，设有代码与测试和文档翻译两条路线。请参阅 Sprint Day 页面的项目目标，了解如何参与。"
     }
   ],
   "status": "published",
@@ -110,14 +110,35 @@
       "description": "使用轻量框架 MiniMind，以较低成本学习训练小型语言模型。MiniMind 的模型架构与 Qwen3 对齐。"
     },
     {
-      "id": "django",
-      "status": "published",
-      "title": "Django 冲刺开发",
-      "description": "与 Soojin Yoon (Luna) 一起探索如何为 Django 开源项目作出贡献。",
-      "lead": "Soojin Yoon (Luna)",
-      "repositoryUrl": "https://github.com/django/django",
       "leadProfileUrl": "https://www.linkedin.com/in/lunadev/",
-      "setupUrl": "https://docs.djangoproject.com/en/6.0/intro/contributing/"
+      "contributions": [
+        "在一项具体贡献上取得进展，例如复现问题或编写回归测试。",
+        "了解活动结束后如何继续贡献。"
+      ],
+      "repositoryUrl": "https://github.com/django/django",
+      "setupUrl": "https://docs.djangoproject.com/en/6.0/intro/contributing/",
+      "status": "published",
+      "title": "Django 代码与测试冲刺",
+      "id": "django",
+      "lead": "Soojin Yoon (Luna)",
+      "description": "以小组形式从 Django 问题跟踪系统中选择一项代码或测试任务。欢迎首次参与开源贡献的人。"
+    },
+    {
+      "skills": [],
+      "leadProfileUrl": "https://www.linkedin.com/in/lunadev/",
+      "discordUrl": "",
+      "contributions": [
+        "在一项具体贡献上取得进展，例如审阅译文。",
+        "了解活动结束后如何继续贡献。"
+      ],
+      "level": "",
+      "repositoryUrl": "https://explore.transifex.com/django/django-docs/",
+      "setupUrl": "https://docs.djangoproject.com/en/6.0/internals/contributing/localizing/",
+      "status": "published",
+      "title": "Django 文档翻译冲刺",
+      "id": "django-translation",
+      "lead": "Soojin Yoon (Luna)",
+      "description": "以小组形式在 Transifex 上改进 Django 官方文档的翻译。欢迎首次参与贡献的人。\n\n请在冲刺前打开 django-docs，点击 Join this project，登录或注册 Transifex，再选择希望贡献的语言并申请加入语言团队。请提前申请，给团队留出审核时间。获批后即可开始翻译。初次参与翻译的人也可以在 Django 国际化论坛自我介绍。"
     }
   ],
   "proposalUrl": "https://cfp.pycon.hk/pyconhk2026/cfp"
