@@ -1,15 +1,11 @@
 {
+  "items": [],
+  "endTime": "",
+  "proposalDeadline": "",
   "slug": "settings",
-  "status": "published",
   "intro": "11月15日（日）は PyCon HK 2026 の開発スプリントです。Python やオープンソースのプロジェクトに、できる範囲で貢献しながら一緒に取り組みます。知識を共有して学ぶコミュニティの協働イベントであり、講師が順を追って教えるワークショップではありません。\n\nプロジェクトや詳しい進め方は現在調整中です。参加方法や準備については、スプリント Q&A をご覧ください。参加は無料ですが、カンファレンスとは別にスプリントのチケット登録が必要です。\n\n会場受付：2026年11月15日 10:00（香港時間、UTC+8）。",
   "date": "2026-11-15",
-  "location": "Hong Kong Institute of Information Technology（HKIIT）、IVE（Lee Wai Lee）キャンパス、将軍澳（Tseung Kwan O）",
-  "registrationUrl": "https://www.eventbrite.hk/e/pycon-hk-2026-tickets-1998483131845",
-  "items": [],
   "startTime": "",
-  "endTime": "",
-  "proposalUrl": "https://cfp.pycon.hk/pyconhk2026/cfp",
-  "proposalDeadline": "",
   "qa": [
     {
       "id": "what-is-sprint",
@@ -72,18 +68,14 @@
       "answer": "Luciano Scarpulla は、素の Python でネイティブデスクトップ UI を作る nsh-py をリードします。Sam Lau は MiniMind を使った大規模言語モデルの学習プロジェクトをリードします。Soojin Yoon (Luna) は Django スプリントをリードします。参加方法は Sprint Day ページの各プロジェクトの目標をご覧ください。"
     }
   ],
+  "status": "published",
+  "location": "Hong Kong Institute of Information Technology（HKIIT）、IVE（Lee Wai Lee）キャンパス、将軍澳（Tseung Kwan O）",
+  "registrationUrl": "https://www.eventbrite.hk/e/pycon-hk-2026-tickets-1998483131845",
   "projects": [
     {
-      "id": "nsh-py",
-      "status": "published",
-      "title": "nsh-py：素の Python で作るネイティブデスクトップ UI",
-      "description": "Luciano と Native Shell（NSH）の Python バインディングに取り組みます。Sprint の目標は、スタイル付きコンポーネント、サンプル、macOS／Windows／Linux 対応の改善です。リポジトリのリンク先は NSH の上流プロジェクトです。Python 専用の環境構築手順は、準備ができ次第掲載します。参加者それぞれの PR がマージされることを目指します。\n\n経験を問わず歓迎します。サンプルやドキュメントの作成でも参加でき、Rust は任意です。macOS、Windows または Linux のノートパソコンを持参してください。",
-      "lead": "Luciano Scarpulla",
-      "repositoryUrl": "https://github.com/longbridge/nsh",
-      "setupUrl": "",
-      "level": "all-levels",
-      "discordUrl": "",
       "skills": [],
+      "leadProfileUrl": "https://www.linkedin.com/in/luciano-scarpulla",
+      "discordUrl": "",
       "contributions": [
         "スタイル付きのバッジ、アラート、入力欄、リスト、レイアウトとヘッドレステストを作成する。",
         "Ctrl-C の処理を含め、macOS と Windows の機能を Linux と同等にする改善に取り組む。",
@@ -91,24 +83,31 @@
         "ドキュメント、環境構築ガイド、サンプルを作成・改善する。",
         "Rust ツールチェーンへの依存を減らすため、ビルド済み Python wheel を検討する。"
       ],
-      "leadProfileUrl": "https://www.linkedin.com/in/luciano-scarpulla"
+      "level": "all-levels",
+      "repositoryUrl": "https://github.com/longbridge/nsh",
+      "setupUrl": "",
+      "status": "published",
+      "title": "nsh-py：素の Python で作るネイティブデスクトップ UI",
+      "id": "nsh-py",
+      "lead": "Luciano Scarpulla",
+      "description": "Luciano と Native Shell（NSH）の Python バインディングに取り組みます。Sprint の目標は、スタイル付きコンポーネント、サンプル、macOS／Windows／Linux 対応の改善です。リポジトリのリンク先は NSH の上流プロジェクトです。Python 専用の環境構築手順は、準備ができ次第掲載します。参加者それぞれの PR がマージされることを目指します。\n\n経験を問わず歓迎します。サンプルやドキュメントの作成でも参加でき、Rust は任意です。macOS、Windows または Linux のノートパソコンを持参してください。"
     },
     {
-      "id": "minimind",
-      "status": "published",
-      "title": "MiniMind で大規模言語モデルを学習させる",
-      "description": "Qwen3 系に合わせたモデル構造を持つ軽量フレームワーク MiniMind を使い、少ないコストで小規模な言語モデルの学習方法を学びます。",
-      "lead": "Sam Lau",
-      "repositoryUrl": "https://github.com/jingyaogong/minimind",
-      "setupUrl": "",
-      "level": "intermediate",
-      "discordUrl": "",
       "skills": [],
+      "discordUrl": "",
       "contributions": [
         "学習用のデータセットを探す、または作成する。",
         "自分たちの言語モデルを学習させる。",
         "学習済みのモデルと対話してみる。"
-      ]
+      ],
+      "level": "intermediate",
+      "repositoryUrl": "https://github.com/jingyaogong/minimind",
+      "setupUrl": "",
+      "status": "published",
+      "title": "MiniMind で大規模言語モデルを学習させる",
+      "id": "minimind",
+      "lead": "Sam Lau",
+      "description": "Qwen3 系に合わせたモデル構造を持つ軽量フレームワーク MiniMind を使い、少ないコストで小規模な言語モデルの学習方法を学びます。"
     },
     {
       "id": "django",
@@ -116,7 +115,10 @@
       "title": "Django スプリント",
       "description": "Soojin Yoon (Luna) と一緒に、オープンソースプロジェクト Django への貢献方法を探ります。",
       "lead": "Soojin Yoon (Luna)",
-      "repositoryUrl": "https://github.com/django/django"
+      "repositoryUrl": "https://github.com/django/django",
+      "leadProfileUrl": "https://www.linkedin.com/in/lunadev/",
+      "setupUrl": "https://docs.djangoproject.com/en/6.0/intro/contributing/"
     }
-  ]
+  ],
+  "proposalUrl": "https://cfp.pycon.hk/pyconhk2026/cfp"
 }

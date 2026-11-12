@@ -1,15 +1,11 @@
 {
+  "items": [],
+  "endTime": "",
+  "proposalDeadline": "",
   "slug": "settings",
-  "status": "published",
   "intro": "11 月 15 日（星期日）係 PyCon HK 2026 Sprint Day。揀個你有興趣嘅 Python 或開源項目，跟住 Sprint Lead 同其他參加者一齊落手做。\n\n新手都歡迎，寫 example、改文件都可以參與。去之前可以睇吓常見問題，了解要準備啲咩。Sprint Day 免費入場，但要同 Conference Day 分開登記門票。\n\n報到時間：2026 年 11 月 15 日上午 10:00（香港時間，UTC+8）。",
   "date": "2026-11-15",
-  "location": "香港資訊科技學院（HKIIT），香港專業教育學院（IVE）（李惠利）校園，將軍澳",
-  "registrationUrl": "https://www.eventbrite.hk/e/pycon-hk-2026-tickets-1998483131845",
-  "items": [],
   "startTime": "",
-  "endTime": "",
-  "proposalUrl": "https://cfp.pycon.hk/pyconhk2026/cfp",
-  "proposalDeadline": "",
   "qa": [
     {
       "id": "what-is-sprint",
@@ -72,18 +68,14 @@
       "answer": "Luciano Scarpulla 會帶 nsh-py，一齊用 Python 整 desktop app。Sam Lau 會帶大家用 MiniMind 訓練大型語言模型。Soojin Yoon (Luna) 會帶 Django 衝刺開發。想知點參與，可以睇返 Sprint Day 頁面嘅項目目標。"
     }
   ],
+  "status": "published",
+  "location": "香港資訊科技學院（HKIIT），香港專業教育學院（IVE）（李惠利）校園，將軍澳",
+  "registrationUrl": "https://www.eventbrite.hk/e/pycon-hk-2026-tickets-1998483131845",
   "projects": [
     {
-      "id": "nsh-py",
-      "status": "published",
-      "title": "nsh-py：用 Python 整 desktop app",
-      "description": "今次同 Luciano 一齊做 Native Shell（NSH）嘅 Python bindings，用 Python 整 native desktop app。會一齊加 UI components、寫 examples，同埋改善 macOS、Windows 同 Linux 嘅支援。希望當日每個人都可以完成一個 PR，merge 返入項目。\n\nPython 新手都歡迎，可以由寫 example、改文件入手，唔使識 Rust；想試 Rust 嘅話，亦有相關工作。請帶部 macOS、Windows 或 Linux 手提電腦。\n\n下面個 GitHub link 係 NSH 主項目，Python 版嘅 setup 指引會遲啲補上。",
-      "lead": "Luciano Scarpulla",
-      "repositoryUrl": "https://github.com/longbridge/nsh",
-      "setupUrl": "",
-      "level": "all-levels",
-      "discordUrl": "",
       "skills": [],
+      "leadProfileUrl": "https://www.linkedin.com/in/luciano-scarpulla",
+      "discordUrl": "",
       "contributions": [
         "加多啲 UI components，例如 badge、alert、input、list 同 layout，每個都補返 headless test。",
         "改善 macOS 同 Windows 嘅支援，追返 Linux 已有嘅功能，包括 Ctrl-C 處理。",
@@ -91,24 +83,31 @@
         "補返文件、setup 指引同 examples，等新手易啲上手。",
         "整 prebuilt Python wheels，等大家唔使自己裝 Rust toolchain。"
       ],
-      "leadProfileUrl": "https://www.linkedin.com/in/luciano-scarpulla"
+      "level": "all-levels",
+      "repositoryUrl": "https://github.com/longbridge/nsh",
+      "setupUrl": "",
+      "status": "published",
+      "title": "nsh-py：用 Python 整 desktop app",
+      "id": "nsh-py",
+      "lead": "Luciano Scarpulla",
+      "description": "今次同 Luciano 一齊做 Native Shell（NSH）嘅 Python bindings，用 Python 整 native desktop app。會一齊加 UI components、寫 examples，同埋改善 macOS、Windows 同 Linux 嘅支援。希望當日每個人都可以完成一個 PR，merge 返入項目。\n\nPython 新手都歡迎，可以由寫 example、改文件入手，唔使識 Rust；想試 Rust 嘅話，亦有相關工作。請帶部 macOS、Windows 或 Linux 手提電腦。\n\n下面個 GitHub link 係 NSH 主項目，Python 版嘅 setup 指引會遲啲補上。"
     },
     {
-      "id": "minimind",
-      "status": "published",
-      "title": "用 MiniMind 訓練大型語言模型",
-      "description": "用 MiniMind 一齊試吓訓練細型語言模型。MiniMind 係個輕量框架，模型架構同 Qwen3 對齊，可以用較低成本學習點樣訓練 LLM。",
-      "lead": "Sam Lau",
-      "repositoryUrl": "https://github.com/jingyaogong/minimind",
-      "setupUrl": "",
-      "level": "intermediate",
-      "discordUrl": "",
       "skills": [],
+      "discordUrl": "",
       "contributions": [
         "搵或者整訓練用嘅資料集。",
         "訓練我哋自己嘅語言模型。",
         "試吓同訓練好嘅模型傾偈。"
-      ]
+      ],
+      "level": "intermediate",
+      "repositoryUrl": "https://github.com/jingyaogong/minimind",
+      "setupUrl": "",
+      "status": "published",
+      "title": "用 MiniMind 訓練大型語言模型",
+      "id": "minimind",
+      "lead": "Sam Lau",
+      "description": "用 MiniMind 一齊試吓訓練細型語言模型。MiniMind 係個輕量框架，模型架構同 Qwen3 對齊，可以用較低成本學習點樣訓練 LLM。"
     },
     {
       "id": "django",
@@ -116,7 +115,10 @@
       "title": "Django 衝刺開發",
       "description": "同 Soojin Yoon (Luna) 一齊探索點樣為 Django 開源項目作出貢獻。",
       "lead": "Soojin Yoon (Luna)",
-      "repositoryUrl": "https://github.com/django/django"
+      "repositoryUrl": "https://github.com/django/django",
+      "leadProfileUrl": "https://www.linkedin.com/in/lunadev/",
+      "setupUrl": "https://docs.djangoproject.com/en/6.0/intro/contributing/"
     }
-  ]
+  ],
+  "proposalUrl": "https://cfp.pycon.hk/pyconhk2026/cfp"
 }
