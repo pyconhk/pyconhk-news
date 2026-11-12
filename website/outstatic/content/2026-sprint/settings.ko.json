@@ -69,7 +69,7 @@
     {
       "id": "project-list",
       "question": "올해 어떤 프로젝트와 스프린트 리드가 참가하나요?",
-      "answer": "Luciano Scarpulla는 순수 Python으로 네이티브 데스크톱 UI를 만드는 nsh-py를 이끕니다. Sam Lau은 MiniMind를 사용한 대규모 언어 모델 학습 프로젝트를 이끕니다. 참여 방법은 Sprint Day 페이지의 프로젝트 목표를 확인해 주세요."
+      "answer": "Luciano Scarpulla는 순수 Python으로 네이티브 데스크톱 UI를 만드는 nsh-py를 이끕니다. Sam Lau은 MiniMind를 사용한 대규모 언어 모델 학습 프로젝트를 이끕니다. Soojin Yoon (Luna)이 Django 스프린트를 이끕니다. 참여 방법은 Sprint Day 페이지의 프로젝트 목표를 확인해 주세요."
     }
   ],
   "projects": [
@@ -109,6 +109,14 @@
         "우리만의 언어 모델을 학습시킵니다.",
         "학습한 모델과 대화해 봅니다."
       ]
+    },
+    {
+      "id": "django",
+      "status": "published",
+      "title": "Django 스프린트",
+      "description": "Soojin Yoon (Luna)과 함께 오픈 소스 프로젝트인 Django에 기여하는 방법을 알아봅니다.",
+      "lead": "Soojin Yoon (Luna)",
+      "repositoryUrl": "https://github.com/django/django"
     }
   ]
 }
