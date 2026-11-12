@@ -65,7 +65,7 @@
     {
       "id": "project-list",
       "question": "今年はどのプロジェクトやリードが参加しますか？",
-      "answer": "Luciano Scarpulla は、素の Python でネイティブデスクトップ UI を作る nsh-py をリードします。Sam Lau は MiniMind を使った大規模言語モデルの学習プロジェクトをリードします。Soojin Yoon (Luna) は Django スプリントをリードします。参加方法は Sprint Day ページの各プロジェクトの目標をご覧ください。"
+      "answer": "Luciano Scarpulla は、素の Python でネイティブデスクトップ UI を作る nsh-py をリードします。Sam Lau は MiniMind を使った大規模言語モデルの学習プロジェクトをリードします。Soojin Yoon (Luna) がリードする Django スプリントには、コード・テストとドキュメント翻訳の二つのトラックがあります。参加方法は Sprint Day ページの各プロジェクトの目標をご覧ください。"
     }
   ],
   "status": "published",
@@ -110,14 +110,35 @@
       "description": "Qwen3 系に合わせたモデル構造を持つ軽量フレームワーク MiniMind を使い、少ないコストで小規模な言語モデルの学習方法を学びます。"
     },
     {
-      "id": "django",
-      "status": "published",
-      "title": "Django スプリント",
-      "description": "Soojin Yoon (Luna) と一緒に、オープンソースプロジェクト Django への貢献方法を探ります。",
-      "lead": "Soojin Yoon (Luna)",
-      "repositoryUrl": "https://github.com/django/django",
       "leadProfileUrl": "https://www.linkedin.com/in/lunadev/",
-      "setupUrl": "https://docs.djangoproject.com/en/6.0/intro/contributing/"
+      "contributions": [
+        "バグの再現や回帰テストの作成など、具体的な貢献を一つ進めます。",
+        "スプリント後も貢献を続ける方法を学びます。"
+      ],
+      "repositoryUrl": "https://github.com/django/django",
+      "setupUrl": "https://docs.djangoproject.com/en/6.0/intro/contributing/",
+      "status": "published",
+      "title": "Django コード・テストスプリント",
+      "id": "django",
+      "lead": "Soojin Yoon (Luna)",
+      "description": "少人数のグループで Django の課題トラッカーからコードまたはテストの課題を選び、取り組みます。初めて貢献する方も歓迎です。"
+    },
+    {
+      "skills": [],
+      "leadProfileUrl": "https://www.linkedin.com/in/lunadev/",
+      "discordUrl": "",
+      "contributions": [
+        "翻訳のレビューなど、具体的な貢献を一つ進めます。",
+        "スプリント後も貢献を続ける方法を学びます。"
+      ],
+      "level": "",
+      "repositoryUrl": "https://explore.transifex.com/django/django-docs/",
+      "setupUrl": "https://docs.djangoproject.com/en/6.0/internals/contributing/localizing/",
+      "status": "published",
+      "title": "Django ドキュメント翻訳スプリント",
+      "id": "django-translation",
+      "lead": "Soojin Yoon (Luna)",
+      "description": "少人数のグループで Transifex を使い、Django 公式ドキュメントの翻訳を改善します。初めて貢献する方も歓迎です。\n\nスプリントの前に django-docs を開き、Join this project を選んで Transifex にログインするかアカウントを作成してください。参加したい言語を選び、言語チームに早めに参加申請をしてください。承認後に翻訳を始められます。初めて翻訳に参加する方は Django の国際化フォーラムで自己紹介することもできます。"
     }
   ],
   "proposalUrl": "https://cfp.pycon.hk/pyconhk2026/cfp"

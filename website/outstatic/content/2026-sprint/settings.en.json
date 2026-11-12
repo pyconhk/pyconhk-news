@@ -65,7 +65,7 @@
     {
       "id": "project-list",
       "question": "Which projects and Sprint Leads are taking part?",
-      "answer": "Luciano Scarpulla leads nsh-py, which brings native desktop UIs to plain Python. Sam Lau leads Training an LLM with MiniMind. Soojin Yoon (Luna) leads the Django Sprint. See the project goals on the Sprint Day page for ways to take part."
+      "answer": "Luciano Scarpulla leads nsh-py, which brings native desktop UIs to plain Python. Sam Lau leads Training an LLM with MiniMind. Soojin Yoon (Luna) leads a Django sprint with two tracks: code and tests, and documentation translation. See the project goals and preparation steps on the Sprint Day page."
     }
   ],
   "status": "published",
@@ -110,14 +110,35 @@
       "description": "Use MiniMind, a lightweight framework with a model architecture aligned with Qwen3, to learn how to train a small language model at low cost."
     },
     {
-      "id": "django",
-      "status": "published",
-      "title": "Django Sprint",
-      "description": "Join Soojin Yoon (Luna) to explore how to contribute to the Django open-source project.",
-      "lead": "Soojin Yoon (Luna)",
-      "repositoryUrl": "https://github.com/django/django",
       "leadProfileUrl": "https://www.linkedin.com/in/lunadev/",
-      "setupUrl": "https://docs.djangoproject.com/en/6.0/intro/contributing/"
+      "contributions": [
+        "Make progress on one concrete contribution, such as reproducing a bug or writing a regression test.",
+        "Learn how to continue contributing after the sprint."
+      ],
+      "repositoryUrl": "https://github.com/django/django",
+      "setupUrl": "https://docs.djangoproject.com/en/6.0/intro/contributing/",
+      "status": "published",
+      "title": "Django Code and Test Sprint",
+      "id": "django",
+      "lead": "Soojin Yoon (Luna)",
+      "description": "Work in small groups on a code or test task from the Django issue tracker. First-time contributors are welcome."
+    },
+    {
+      "skills": [],
+      "leadProfileUrl": "https://www.linkedin.com/in/lunadev/",
+      "discordUrl": "",
+      "contributions": [
+        "Make progress on a concrete contribution, such as reviewing a translation.",
+        "Learn how to continue contributing after the sprint."
+      ],
+      "level": "",
+      "repositoryUrl": "https://explore.transifex.com/django/django-docs/",
+      "setupUrl": "https://docs.djangoproject.com/en/6.0/internals/contributing/localizing/",
+      "status": "published",
+      "title": "Django Documentation Translation Sprint",
+      "id": "django-translation",
+      "lead": "Soojin Yoon (Luna)",
+      "description": "Work in small groups to improve Django’s documentation translations on Transifex. First-time contributors are welcome.\n\nBefore the sprint, open the django-docs project and click Join this project. Sign in or create a Transifex account, select your language and request to join its team. Apply early so your team has time to review your request. You can start translating once approved. New translators can also introduce themselves on the Django Internationalization Forum."
     }
   ],
   "proposalUrl": "https://cfp.pycon.hk/pyconhk2026/cfp"

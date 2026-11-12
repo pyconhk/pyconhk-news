@@ -65,7 +65,7 @@
     {
       "id": "project-list",
       "question": "今年有邊啲項目同 Sprint Lead？",
-      "answer": "Luciano Scarpulla 會帶 nsh-py，一齊用 Python 整 desktop app。Sam Lau 會帶大家用 MiniMind 訓練大型語言模型。Soojin Yoon (Luna) 會帶 Django 衝刺開發。想知點參與，可以睇返 Sprint Day 頁面嘅項目目標。"
+      "answer": "Luciano Scarpulla 會帶 nsh-py，一齊用 Python 整 desktop app。Sam Lau 會帶大家用 MiniMind 訓練大型語言模型。Soojin Yoon (Luna) 嘅 Django Sprint 有兩條路線：程式碼同測試，以及文件翻譯。想知點參與，可以睇返 Sprint Day 頁面嘅項目目標。"
     }
   ],
   "status": "published",
@@ -110,14 +110,35 @@
       "description": "用 MiniMind 一齊試吓訓練細型語言模型。MiniMind 係個輕量框架，模型架構同 Qwen3 對齊，可以用較低成本學習點樣訓練 LLM。"
     },
     {
-      "id": "django",
-      "status": "published",
-      "title": "Django 衝刺開發",
-      "description": "同 Soojin Yoon (Luna) 一齊探索點樣為 Django 開源項目作出貢獻。",
-      "lead": "Soojin Yoon (Luna)",
-      "repositoryUrl": "https://github.com/django/django",
       "leadProfileUrl": "https://www.linkedin.com/in/lunadev/",
-      "setupUrl": "https://docs.djangoproject.com/en/6.0/intro/contributing/"
+      "contributions": [
+        "喺一項具體貢獻上取得進展，例如重現 bug 或者寫 regression test。",
+        "了解 Sprint 完咗之後可以點繼續貢獻。"
+      ],
+      "repositoryUrl": "https://github.com/django/django",
+      "setupUrl": "https://docs.djangoproject.com/en/6.0/intro/contributing/",
+      "status": "published",
+      "title": "Django 程式碼同測試 Sprint",
+      "id": "django",
+      "lead": "Soojin Yoon (Luna)",
+      "description": "分小組由 Django 嘅 issue tracker 揀一項程式碼或者測試任務落手做。歡迎第一次參與開源貢獻嘅朋友。"
+    },
+    {
+      "skills": [],
+      "leadProfileUrl": "https://www.linkedin.com/in/lunadev/",
+      "discordUrl": "",
+      "contributions": [
+        "喺一項具體貢獻上取得進展，例如檢閱一段譯文。",
+        "了解 Sprint 完咗之後可以點繼續貢獻。"
+      ],
+      "level": "",
+      "repositoryUrl": "https://explore.transifex.com/django/django-docs/",
+      "setupUrl": "https://docs.djangoproject.com/en/6.0/internals/contributing/localizing/",
+      "status": "published",
+      "title": "Django 文件翻譯 Sprint",
+      "id": "django-translation",
+      "lead": "Soojin Yoon (Luna)",
+      "description": "分小組用 Transifex 改善 Django 官方文件嘅翻譯。歡迎第一次參與貢獻嘅朋友。\n\nSprint 前先開啟 django-docs，撳 Join this project，登入或註冊 Transifex，再揀想貢獻嘅語言同申請加入語言團隊。請預早申請，等團隊有時間審批。獲批後就可以開始翻譯。第一次翻譯嘅朋友亦可以喺 Django 國際化論壇自我介紹。"
     }
   ],
   "proposalUrl": "https://cfp.pycon.hk/pyconhk2026/cfp"
