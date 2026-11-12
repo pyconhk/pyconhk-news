@@ -75,7 +75,7 @@
     {
       "skills": [],
       "leadProfileUrl": "https://www.linkedin.com/in/luciano-scarpulla",
-      "discordUrl": "",
+      "discordUrl": "https://discord.gg/tXHmgrsyVZ",
       "contributions": [
         "加多啲 UI components，例如 badge、alert、input、list 同 layout，每個都補返 headless test。",
         "改善 macOS 同 Windows 嘅支援，追返 Linux 已有嘅功能，包括 Ctrl-C 處理。",
@@ -94,7 +94,7 @@
     },
     {
       "skills": [],
-      "discordUrl": "",
+      "discordUrl": "https://discord.gg/tXHmgrsyVZ",
       "contributions": [
         "搵或者整訓練用嘅資料集。",
         "訓練我哋自己嘅語言模型。",
@@ -114,6 +114,7 @@
         "識基本 Python、對 Django 有少少認識會有幫助。"
       ],
       "leadProfileUrl": "https://www.linkedin.com/in/lunadev/",
+      "discordUrl": "https://discord.gg/RDHZNtEvX8",
       "contributions": [
         "小組揀一個 Django issue，先講清楚要驗證邊個行為。",
         "做一項具體貢獻，例如重現問題同記低步驟、寫 regression test，或者試一個細修正。",
@@ -134,7 +135,7 @@
         "睇得明英文技術文件，並能用你揀嘅語言清楚表達。"
       ],
       "leadProfileUrl": "https://www.linkedin.com/in/lunadev/",
-      "discordUrl": "",
+      "discordUrl": "https://discord.gg/RDHZNtEvX8",
       "contributions": [
         "揀一小段 Django 文件，將你揀嘅語言版本同英文原文對照。",
         "檢查意思有冇走樣、Django 術語係咪一致，同埋譯文同程式碼例子係咪對得上。",
