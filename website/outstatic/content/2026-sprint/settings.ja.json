@@ -75,7 +75,7 @@
     {
       "skills": [],
       "leadProfileUrl": "https://www.linkedin.com/in/luciano-scarpulla",
-      "discordUrl": "",
+      "discordUrl": "https://discord.gg/tXHmgrsyVZ",
       "contributions": [
         "スタイル付きのバッジ、アラート、入力欄、リスト、レイアウトとヘッドレステストを作成する。",
         "Ctrl-C の処理を含め、macOS と Windows の機能を Linux と同等にする改善に取り組む。",
@@ -94,7 +94,7 @@
     },
     {
       "skills": [],
-      "discordUrl": "",
+      "discordUrl": "https://discord.gg/tXHmgrsyVZ",
       "contributions": [
         "学習用のデータセットを探す、または作成する。",
         "自分たちの言語モデルを学習させる。",
@@ -114,6 +114,7 @@
         "Python の基礎知識と Django の基本的な理解があると役立ちます。"
       ],
       "leadProfileUrl": "https://www.linkedin.com/in/lunadev/",
+      "discordUrl": "https://discord.gg/RDHZNtEvX8",
       "contributions": [
         "グループで Django の課題を一つ選び、確認する動作を決める。",
         "問題を再現して手順を記録する、回帰テストを書く、小さな修正を試す、のいずれかに取り組む。",
@@ -134,7 +135,7 @@
         "英語の技術文書を読み、選んだ言語で分かりやすく書けること。"
       ],
       "leadProfileUrl": "https://www.linkedin.com/in/lunadev/",
-      "discordUrl": "",
+      "discordUrl": "https://discord.gg/RDHZNtEvX8",
       "contributions": [
         "Django ドキュメントの短い一節を選び、希望する言語の訳文を英語の原文と読み比べる。",
         "原文の意味や Django の用語、コード例が訳文に正しく反映されているか確認する。",

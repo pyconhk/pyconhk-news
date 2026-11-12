@@ -75,7 +75,7 @@
     {
       "skills": [],
       "leadProfileUrl": "https://www.linkedin.com/in/luciano-scarpulla",
-      "discordUrl": "",
+      "discordUrl": "https://discord.gg/tXHmgrsyVZ",
       "contributions": [
         "開發具樣式的徽章、提示、輸入框、列表及版面配置，並加入無介面測試。",
         "改善 macOS 與 Windows，使功能與 Linux 看齊，包括 Ctrl-C 處理。",
@@ -94,7 +94,7 @@
     },
     {
       "skills": [],
-      "discordUrl": "",
+      "discordUrl": "https://discord.gg/tXHmgrsyVZ",
       "contributions": [
         "尋找或建立訓練資料集。",
         "訓練自己的語言模型。",
@@ -114,6 +114,7 @@
         "具備 Python 基礎並對 Django 有基本認識會有幫助。"
       ],
       "leadProfileUrl": "https://www.linkedin.com/in/lunadev/",
+      "discordUrl": "https://discord.gg/RDHZNtEvX8",
       "contributions": [
         "小組選擇一個 Django issue，先確認要驗證的行為。",
         "完成一項具體貢獻，例如重現問題並記錄步驟、撰寫回歸測試，或嘗試小幅修正。",
@@ -134,7 +135,7 @@
         "能閱讀英文技術文件，並以所選語言清楚表達。"
       ],
       "leadProfileUrl": "https://www.linkedin.com/in/lunadev/",
-      "discordUrl": "",
+      "discordUrl": "https://discord.gg/RDHZNtEvX8",
       "contributions": [
         "選一小段 Django 文件，將所選語言的版本與英文原文對照。",
         "檢查譯文是否保留原意、Django 術語是否一致，並核對程式碼範例。",
