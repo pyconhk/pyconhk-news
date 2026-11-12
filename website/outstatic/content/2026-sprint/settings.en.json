@@ -1,15 +1,11 @@
 {
+  "items": [],
+  "endTime": "",
+  "proposalDeadline": "",
   "slug": "settings",
-  "status": "published",
   "intro": "Join the PyCon HK 2026 Development Sprint on Sunday, 15 November: a day of community collaboration on Python and open-source projects. Come ready to contribute, share ideas and learn together; this is not a taught workshop.\n\nWe are finalizing the projects and detailed arrangements. Read the Sprint Q&A to learn what to expect and how to prepare. Admission is free; register for Sprint Day separately from Conference Day.\n\nOn-site registration: 15 November 2026 at 10:00 Hong Kong time (UTC+8).",
   "date": "2026-11-15",
-  "location": "Hong Kong Institute of Information Technology (HKIIT), IVE (Lee Wai Lee), Tseung Kwan O",
-  "registrationUrl": "https://www.eventbrite.hk/e/pycon-hk-2026-tickets-1998483131845",
-  "items": [],
   "startTime": "",
-  "endTime": "",
-  "proposalUrl": "https://cfp.pycon.hk/pyconhk2026/cfp",
-  "proposalDeadline": "",
   "qa": [
     {
       "id": "what-is-sprint",
@@ -72,18 +68,14 @@
       "answer": "Luciano Scarpulla leads nsh-py, which brings native desktop UIs to plain Python. Sam Lau leads Training an LLM with MiniMind. Soojin Yoon (Luna) leads the Django Sprint. See the project goals on the Sprint Day page for ways to take part."
     }
   ],
+  "status": "published",
+  "location": "Hong Kong Institute of Information Technology (HKIIT), IVE (Lee Wai Lee), Tseung Kwan O",
+  "registrationUrl": "https://www.eventbrite.hk/e/pycon-hk-2026-tickets-1998483131845",
   "projects": [
     {
-      "id": "nsh-py",
-      "status": "published",
-      "title": "nsh-py: native desktop UIs in plain Python",
-      "description": "Join Luciano to work on Python bindings for Native Shell (NSH), with Sprint goals covering styled components, examples and macOS/Windows/Linux support. The repository link is the upstream NSH project. Python-specific setup instructions will be added when available. The aim is for each participant to contribute a merged PR.\n\nAll levels are welcome, including examples and documentation; Rust is optional. Bring a macOS, Windows or Linux laptop.",
-      "lead": "Luciano Scarpulla",
-      "repositoryUrl": "https://github.com/longbridge/nsh",
-      "setupUrl": "",
-      "level": "all-levels",
-      "discordUrl": "",
       "skills": [],
+      "leadProfileUrl": "https://www.linkedin.com/in/luciano-scarpulla",
+      "discordUrl": "",
       "contributions": [
         "Develop styled badges, alerts, inputs, lists and layouts, with headless tests.",
         "Work toward macOS and Windows parity with Linux, including Ctrl-C handling.",
@@ -91,24 +83,31 @@
         "Write and improve documentation, setup guides and examples.",
         "Explore prebuilt Python wheels to reduce the need for a Rust toolchain."
       ],
-      "leadProfileUrl": "https://www.linkedin.com/in/luciano-scarpulla"
+      "level": "all-levels",
+      "repositoryUrl": "https://github.com/longbridge/nsh",
+      "setupUrl": "",
+      "status": "published",
+      "title": "nsh-py: native desktop UIs in plain Python",
+      "id": "nsh-py",
+      "lead": "Luciano Scarpulla",
+      "description": "Join Luciano to work on Python bindings for Native Shell (NSH), with Sprint goals covering styled components, examples and macOS/Windows/Linux support. The repository link is the upstream NSH project. Python-specific setup instructions will be added when available. The aim is for each participant to contribute a merged PR.\n\nAll levels are welcome, including examples and documentation; Rust is optional. Bring a macOS, Windows or Linux laptop."
     },
     {
-      "id": "minimind",
-      "status": "published",
-      "title": "Training an LLM with MiniMind",
-      "description": "Use MiniMind, a lightweight framework with a model architecture aligned with Qwen3, to learn how to train a small language model at low cost.",
-      "lead": "Sam Lau",
-      "repositoryUrl": "https://github.com/jingyaogong/minimind",
-      "setupUrl": "",
-      "level": "intermediate",
-      "discordUrl": "",
       "skills": [],
+      "discordUrl": "",
       "contributions": [
         "Find or create datasets.",
         "Train our own language model.",
         "Try chatting with the trained model."
-      ]
+      ],
+      "level": "intermediate",
+      "repositoryUrl": "https://github.com/jingyaogong/minimind",
+      "setupUrl": "",
+      "status": "published",
+      "title": "Training an LLM with MiniMind",
+      "id": "minimind",
+      "lead": "Sam Lau",
+      "description": "Use MiniMind, a lightweight framework with a model architecture aligned with Qwen3, to learn how to train a small language model at low cost."
     },
     {
       "id": "django",
@@ -116,7 +115,10 @@
       "title": "Django Sprint",
       "description": "Join Soojin Yoon (Luna) to explore how to contribute to the Django open-source project.",
       "lead": "Soojin Yoon (Luna)",
-      "repositoryUrl": "https://github.com/django/django"
+      "repositoryUrl": "https://github.com/django/django",
+      "leadProfileUrl": "https://www.linkedin.com/in/lunadev/",
+      "setupUrl": "https://docs.djangoproject.com/en/6.0/intro/contributing/"
     }
-  ]
+  ],
+  "proposalUrl": "https://cfp.pycon.hk/pyconhk2026/cfp"
 }

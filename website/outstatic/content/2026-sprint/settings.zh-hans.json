@@ -1,15 +1,11 @@
 {
+  "items": [],
+  "endTime": "",
+  "proposalDeadline": "",
   "slug": "settings",
-  "status": "published",
   "intro": "欢迎于 11 月 15 日星期日参加 PyCon HK 2026 开发冲刺日，与社区共同开发 Python 与开源项目。这是以实际贡献与共同学习为目标的社区协作活动，并非由导师逐步授课的工作坊。\n\n我们正在确认项目及详细安排。欢迎先阅读开发冲刺常见问题，了解参与方式与提前准备事项。免费入场，请与大会日分别登记门票。\n\n现场报到时间：2026 年 11 月 15 日上午 10:00（香港时间，UTC+8）。",
   "date": "2026-11-15",
-  "location": "香港资讯科技学院（HKIIT），香港专业教育学院（IVE）（李惠利）校园，将军澳",
-  "registrationUrl": "https://www.eventbrite.hk/e/pycon-hk-2026-tickets-1998483131845",
-  "items": [],
   "startTime": "",
-  "endTime": "",
-  "proposalUrl": "https://cfp.pycon.hk/pyconhk2026/cfp",
-  "proposalDeadline": "",
   "qa": [
     {
       "id": "what-is-sprint",
@@ -72,18 +68,14 @@
       "answer": "Luciano Scarpulla 带领 nsh-py，使用纯 Python 构建原生桌面界面。Sam Lau 带领 MiniMind 大型语言模型训练项目。Soojin Yoon (Luna) 带领 Django 冲刺开发。请参阅 Sprint Day 页面的项目目标，了解如何参与。"
     }
   ],
+  "status": "published",
+  "location": "香港资讯科技学院（HKIIT），香港专业教育学院（IVE）（李惠利）校园，将军澳",
+  "registrationUrl": "https://www.eventbrite.hk/e/pycon-hk-2026-tickets-1998483131845",
   "projects": [
     {
-      "id": "nsh-py",
-      "status": "published",
-      "title": "nsh-py：用纯 Python 构建原生桌面界面",
-      "description": "与 Luciano 一起开发 Native Shell（NSH）的 Python 绑定，Sprint 目标包括带样式的界面组件、示例及 macOS／Windows／Linux 支持。仓库链接指向 NSH 上游项目。Python 专用安装指南将在资料齐备后公布。目标是让每位参与者贡献一个获合并的 PR。\n\n欢迎任何水平的参与者，也可通过示例与文档作出贡献；Rust 为可选技能。请携带运行 macOS、Windows 或 Linux 的笔记本电脑。",
-      "lead": "Luciano Scarpulla",
-      "repositoryUrl": "https://github.com/longbridge/nsh",
-      "setupUrl": "",
-      "level": "all-levels",
-      "discordUrl": "",
       "skills": [],
+      "leadProfileUrl": "https://www.linkedin.com/in/luciano-scarpulla",
+      "discordUrl": "",
       "contributions": [
         "开发带样式的徽章、提示、输入框、列表及布局，并加入无界面测试。",
         "改善 macOS 与 Windows，使功能与 Linux 看齐，包括 Ctrl-C 处理。",
@@ -91,24 +83,31 @@
         "撰写及改善文档、安装指南与示例。",
         "探索预编译的 Python wheel，减少对 Rust 工具链的需求。"
       ],
-      "leadProfileUrl": "https://www.linkedin.com/in/luciano-scarpulla"
+      "level": "all-levels",
+      "repositoryUrl": "https://github.com/longbridge/nsh",
+      "setupUrl": "",
+      "status": "published",
+      "title": "nsh-py：用纯 Python 构建原生桌面界面",
+      "id": "nsh-py",
+      "lead": "Luciano Scarpulla",
+      "description": "与 Luciano 一起开发 Native Shell（NSH）的 Python 绑定，Sprint 目标包括带样式的界面组件、示例及 macOS／Windows／Linux 支持。仓库链接指向 NSH 上游项目。Python 专用安装指南将在资料齐备后公布。目标是让每位参与者贡献一个获合并的 PR。\n\n欢迎任何水平的参与者，也可通过示例与文档作出贡献；Rust 为可选技能。请携带运行 macOS、Windows 或 Linux 的笔记本电脑。"
     },
     {
-      "id": "minimind",
-      "status": "published",
-      "title": "使用 MiniMind 训练大型语言模型",
-      "description": "使用轻量框架 MiniMind，以较低成本学习训练小型语言模型。MiniMind 的模型架构与 Qwen3 对齐。",
-      "lead": "Sam Lau",
-      "repositoryUrl": "https://github.com/jingyaogong/minimind",
-      "setupUrl": "",
-      "level": "intermediate",
-      "discordUrl": "",
       "skills": [],
+      "discordUrl": "",
       "contributions": [
         "寻找或创建训练数据集。",
         "训练自己的语言模型。",
         "尝试与训练完成的模型对话。"
-      ]
+      ],
+      "level": "intermediate",
+      "repositoryUrl": "https://github.com/jingyaogong/minimind",
+      "setupUrl": "",
+      "status": "published",
+      "title": "使用 MiniMind 训练大型语言模型",
+      "id": "minimind",
+      "lead": "Sam Lau",
+      "description": "使用轻量框架 MiniMind，以较低成本学习训练小型语言模型。MiniMind 的模型架构与 Qwen3 对齐。"
     },
     {
       "id": "django",
@@ -116,7 +115,10 @@
       "title": "Django 冲刺开发",
       "description": "与 Soojin Yoon (Luna) 一起探索如何为 Django 开源项目作出贡献。",
       "lead": "Soojin Yoon (Luna)",
-      "repositoryUrl": "https://github.com/django/django"
+      "repositoryUrl": "https://github.com/django/django",
+      "leadProfileUrl": "https://www.linkedin.com/in/lunadev/",
+      "setupUrl": "https://docs.djangoproject.com/en/6.0/intro/contributing/"
     }
-  ]
+  ],
+  "proposalUrl": "https://cfp.pycon.hk/pyconhk2026/cfp"
 }
