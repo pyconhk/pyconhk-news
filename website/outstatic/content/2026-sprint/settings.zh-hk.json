@@ -110,11 +110,17 @@
       "description": "用 MiniMind 一齊試吓訓練細型語言模型。MiniMind 係個輕量框架，模型架構同 Qwen3 對齊，可以用較低成本學習點樣訓練 LLM。"
     },
     {
+      "skills": [
+        "識基本 Python、對 Django 有少少認識會有幫助。"
+      ],
       "leadProfileUrl": "https://www.linkedin.com/in/lunadev/",
       "contributions": [
-        "喺一項具體貢獻上取得進展，例如重現 bug 或者寫 regression test。",
-        "了解 Sprint 完咗之後可以點繼續貢獻。"
+        "小組揀一個 Django issue，先講清楚要驗證邊個行為。",
+        "做一項具體貢獻，例如重現問題同記低步驟、寫 regression test，或者試一個細修正。",
+        "一齊睇返重現結果、測試或者修正，記低驗證到咩，同埋仲卡喺邊。",
+        "定低 Sprint 後嘅下一步，例如更新 issue、執好個測試，或者準備 PR。"
       ],
+      "level": "intermediate",
       "repositoryUrl": "https://github.com/django/django",
       "setupUrl": "https://docs.djangoproject.com/en/6.0/intro/contributing/",
       "status": "published",
@@ -124,14 +130,18 @@
       "description": "分小組由 Django 嘅 issue tracker 揀一項程式碼或者測試任務落手做。歡迎第一次參與開源貢獻嘅朋友。"
     },
     {
-      "skills": [],
+      "skills": [
+        "睇得明英文技術文件，並能用你揀嘅語言清楚表達。"
+      ],
       "leadProfileUrl": "https://www.linkedin.com/in/lunadev/",
       "discordUrl": "",
       "contributions": [
-        "喺一項具體貢獻上取得進展，例如檢閱一段譯文。",
-        "了解 Sprint 完咗之後可以點繼續貢獻。"
+        "揀一小段 Django 文件，將你揀嘅語言版本同英文原文對照。",
+        "檢查意思有冇走樣、Django 術語係咪一致，同埋譯文同程式碼例子係咪對得上。",
+        "小組一齊睇返譯文。已獲語言團隊批准就喺 Transifex 提交修改建議，等緊批核就先留低草稿。",
+        "記低仲未解決嘅用字或術語問題，方便 Sprint 後繼續跟進。"
       ],
-      "level": "",
+      "level": "all-levels",
       "repositoryUrl": "https://explore.transifex.com/django/django-docs/",
       "setupUrl": "https://docs.djangoproject.com/en/6.0/internals/contributing/localizing/",
       "status": "published",

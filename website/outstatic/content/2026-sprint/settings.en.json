@@ -110,11 +110,17 @@
       "description": "Use MiniMind, a lightweight framework with a model architecture aligned with Qwen3, to learn how to train a small language model at low cost."
     },
     {
+      "skills": [
+        "Comfort with Python and basic familiarity with Django are helpful."
+      ],
       "leadProfileUrl": "https://www.linkedin.com/in/lunadev/",
       "contributions": [
-        "Make progress on one concrete contribution, such as reproducing a bug or writing a regression test.",
-        "Learn how to continue contributing after the sprint."
+        "Pick one Django issue as a group and agree on the behaviour you want to verify.",
+        "Make one concrete contribution: reproduce the issue and record the steps, write a regression test, or try a small fix.",
+        "Review the evidence, test or fix together. Note what you verified and where you got stuck.",
+        "Leave with a next step, such as updating the issue, refining the test or preparing a pull request."
       ],
+      "level": "intermediate",
       "repositoryUrl": "https://github.com/django/django",
       "setupUrl": "https://docs.djangoproject.com/en/6.0/intro/contributing/",
       "status": "published",
@@ -124,14 +130,18 @@
       "description": "Work in small groups on a code or test task from the Django issue tracker. First-time contributors are welcome."
     },
     {
-      "skills": [],
+      "skills": [
+        "Reading English documentation and writing in your chosen language."
+      ],
       "leadProfileUrl": "https://www.linkedin.com/in/lunadev/",
       "discordUrl": "",
       "contributions": [
-        "Make progress on a concrete contribution, such as reviewing a translation.",
-        "Learn how to continue contributing after the sprint."
+        "Pick a short Django docs passage in your chosen language and read it alongside the English original.",
+        "Check that the translation preserves the meaning, uses consistent Django terms and matches the code examples.",
+        "Review the wording together. If your language team has approved you, suggest the edits in Transifex. If you’re waiting for approval, save your draft to submit later.",
+        "Note any open wording or terminology questions so you can continue the review after the sprint."
       ],
-      "level": "",
+      "level": "all-levels",
       "repositoryUrl": "https://explore.transifex.com/django/django-docs/",
       "setupUrl": "https://docs.djangoproject.com/en/6.0/internals/contributing/localizing/",
       "status": "published",
