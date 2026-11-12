@@ -69,7 +69,7 @@
     {
       "id": "project-list",
       "question": "今年有邊啲項目同 Sprint Lead？",
-      "answer": "Luciano Scarpulla 會帶 nsh-py，一齊用 Python 整 desktop app。Sam Lau 會帶大家用 MiniMind 訓練大型語言模型。想知點參與，可以睇返 Sprint Day 頁面嘅項目目標。"
+      "answer": "Luciano Scarpulla 會帶 nsh-py，一齊用 Python 整 desktop app。Sam Lau 會帶大家用 MiniMind 訓練大型語言模型。Soojin Yoon (Luna) 會帶 Django 衝刺開發。想知點參與，可以睇返 Sprint Day 頁面嘅項目目標。"
     }
   ],
   "projects": [
@@ -109,6 +109,14 @@
         "訓練我哋自己嘅語言模型。",
         "試吓同訓練好嘅模型傾偈。"
       ]
+    },
+    {
+      "id": "django",
+      "status": "published",
+      "title": "Django 衝刺開發",
+      "description": "同 Soojin Yoon (Luna) 一齊探索點樣為 Django 開源項目作出貢獻。",
+      "lead": "Soojin Yoon (Luna)",
+      "repositoryUrl": "https://github.com/django/django"
     }
   ]
 }

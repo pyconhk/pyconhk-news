@@ -69,7 +69,7 @@
     {
       "id": "project-list",
       "question": "今年はどのプロジェクトやリードが参加しますか？",
-      "answer": "Luciano Scarpulla は、素の Python でネイティブデスクトップ UI を作る nsh-py をリードします。Sam Lau は MiniMind を使った大規模言語モデルの学習プロジェクトをリードします。参加方法は Sprint Day ページの各プロジェクトの目標をご覧ください。"
+      "answer": "Luciano Scarpulla は、素の Python でネイティブデスクトップ UI を作る nsh-py をリードします。Sam Lau は MiniMind を使った大規模言語モデルの学習プロジェクトをリードします。Soojin Yoon (Luna) は Django スプリントをリードします。参加方法は Sprint Day ページの各プロジェクトの目標をご覧ください。"
     }
   ],
   "projects": [
@@ -109,6 +109,14 @@
         "自分たちの言語モデルを学習させる。",
         "学習済みのモデルと対話してみる。"
       ]
+    },
+    {
+      "id": "django",
+      "status": "published",
+      "title": "Django スプリント",
+      "description": "Soojin Yoon (Luna) と一緒に、オープンソースプロジェクト Django への貢献方法を探ります。",
+      "lead": "Soojin Yoon (Luna)",
+      "repositoryUrl": "https://github.com/django/django"
     }
   ]
 }

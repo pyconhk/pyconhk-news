@@ -69,7 +69,7 @@
     {
       "id": "project-list",
       "question": "Which projects and Sprint Leads are taking part?",
-      "answer": "Luciano Scarpulla leads nsh-py, which brings native desktop UIs to plain Python. Sam Lau leads Training an LLM with MiniMind. See the project goals on the Sprint Day page for ways to take part."
+      "answer": "Luciano Scarpulla leads nsh-py, which brings native desktop UIs to plain Python. Sam Lau leads Training an LLM with MiniMind. Soojin Yoon (Luna) leads the Django Sprint. See the project goals on the Sprint Day page for ways to take part."
     }
   ],
   "projects": [
@@ -109,6 +109,14 @@
         "Train our own language model.",
         "Try chatting with the trained model."
       ]
+    },
+    {
+      "id": "django",
+      "status": "published",
+      "title": "Django Sprint",
+      "description": "Join Soojin Yoon (Luna) to explore how to contribute to the Django open-source project.",
+      "lead": "Soojin Yoon (Luna)",
+      "repositoryUrl": "https://github.com/django/django"
     }
   ]
 }

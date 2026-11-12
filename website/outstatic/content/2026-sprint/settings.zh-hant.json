@@ -69,7 +69,7 @@
     {
       "id": "project-list",
       "question": "今年有哪些專案及 Sprint Lead？",
-      "answer": "Luciano Scarpulla 帶領 nsh-py，使用純 Python 建立原生桌面介面。Sam Lau 帶領 MiniMind 大型語言模型訓練專案。請參閱 Sprint Day 頁面的專案目標，了解如何參與。"
+      "answer": "Luciano Scarpulla 帶領 nsh-py，使用純 Python 建立原生桌面介面。Sam Lau 帶領 MiniMind 大型語言模型訓練專案。Soojin Yoon (Luna) 帶領 Django 衝刺開發。請參閱 Sprint Day 頁面的專案目標，了解如何參與。"
     }
   ],
   "projects": [
@@ -109,6 +109,14 @@
         "訓練自己的語言模型。",
         "嘗試與訓練完成的模型對話。"
       ]
+    },
+    {
+      "id": "django",
+      "status": "published",
+      "title": "Django 衝刺開發",
+      "description": "與 Soojin Yoon (Luna) 一起探索如何為 Django 開源專案作出貢獻。",
+      "lead": "Soojin Yoon (Luna)",
+      "repositoryUrl": "https://github.com/django/django"
     }
   ]
 }
