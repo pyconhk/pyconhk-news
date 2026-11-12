@@ -75,7 +75,7 @@
     {
       "skills": [],
       "leadProfileUrl": "https://www.linkedin.com/in/luciano-scarpulla",
-      "discordUrl": "",
+      "discordUrl": "https://discord.gg/tXHmgrsyVZ",
       "contributions": [
         "Develop styled badges, alerts, inputs, lists and layouts, with headless tests.",
         "Work toward macOS and Windows parity with Linux, including Ctrl-C handling.",
@@ -94,7 +94,7 @@
     },
     {
       "skills": [],
-      "discordUrl": "",
+      "discordUrl": "https://discord.gg/tXHmgrsyVZ",
       "contributions": [
         "Find or create datasets.",
         "Train our own language model.",
@@ -114,6 +114,7 @@
         "Comfort with Python and basic familiarity with Django are helpful."
       ],
       "leadProfileUrl": "https://www.linkedin.com/in/lunadev/",
+      "discordUrl": "https://discord.gg/RDHZNtEvX8",
       "contributions": [
         "Pick one Django issue as a group and agree on the behaviour you want to verify.",
         "Make one concrete contribution: reproduce the issue and record the steps, write a regression test, or try a small fix.",
@@ -134,7 +135,7 @@
         "Reading English documentation and writing in your chosen language."
       ],
       "leadProfileUrl": "https://www.linkedin.com/in/lunadev/",
-      "discordUrl": "",
+      "discordUrl": "https://discord.gg/RDHZNtEvX8",
       "contributions": [
         "Pick a short Django docs passage in your chosen language and read it alongside the English original.",
         "Check that the translation preserves the meaning, uses consistent Django terms and matches the code examples.",

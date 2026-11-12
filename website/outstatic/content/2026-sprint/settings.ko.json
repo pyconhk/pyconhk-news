@@ -75,7 +75,7 @@
     {
       "skills": [],
       "leadProfileUrl": "https://www.linkedin.com/in/luciano-scarpulla",
-      "discordUrl": "",
+      "discordUrl": "https://discord.gg/tXHmgrsyVZ",
       "contributions": [
         "스타일이 적용된 배지, 알림, 입력란, 목록, 레이아웃과 헤드리스 테스트를 개발합니다.",
         "Ctrl-C 처리를 포함해 macOS와 Windows의 기능을 Linux와 동등하게 개선합니다.",
@@ -94,7 +94,7 @@
     },
     {
       "skills": [],
-      "discordUrl": "",
+      "discordUrl": "https://discord.gg/tXHmgrsyVZ",
       "contributions": [
         "학습용 데이터셋을 찾거나 만듭니다.",
         "우리만의 언어 모델을 학습시킵니다.",
@@ -114,6 +114,7 @@
         "Python 기초와 Django에 대한 기본적인 이해가 있으면 도움이 됩니다."
       ],
       "leadProfileUrl": "https://www.linkedin.com/in/lunadev/",
+      "discordUrl": "https://discord.gg/RDHZNtEvX8",
       "contributions": [
         "그룹에서 Django 이슈를 하나 고르고 확인할 동작을 정합니다.",
         "문제를 재현해 절차를 기록하거나, 회귀 테스트를 작성하거나, 작은 수정에 도전합니다.",
@@ -134,7 +135,7 @@
         "영어 기술 문서를 읽고 선택한 언어로 명확하게 표현하는 능력."
       ],
       "leadProfileUrl": "https://www.linkedin.com/in/lunadev/",
-      "discordUrl": "",
+      "discordUrl": "https://discord.gg/RDHZNtEvX8",
       "contributions": [
         "Django 문서에서 짧은 부분을 골라 선택한 언어의 번역을 영어 원문과 비교합니다.",
         "원문의 의미가 잘 전달되는지, Django 용어가 일관적인지, 코드 예제와 맞는지 확인합니다.",
