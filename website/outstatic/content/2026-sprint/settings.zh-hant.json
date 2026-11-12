@@ -110,11 +110,17 @@
       "description": "透過輕量框架 MiniMind，以較低成本學習訓練小型語言模型。MiniMind 的模型架構與 Qwen3 對齊。"
     },
     {
+      "skills": [
+        "具備 Python 基礎並對 Django 有基本認識會有幫助。"
+      ],
       "leadProfileUrl": "https://www.linkedin.com/in/lunadev/",
       "contributions": [
-        "在一項具體貢獻上取得進展，例如重現錯誤或撰寫回歸測試。",
-        "了解活動結束後如何繼續貢獻。"
+        "小組選擇一個 Django issue，先確認要驗證的行為。",
+        "完成一項具體貢獻，例如重現問題並記錄步驟、撰寫回歸測試，或嘗試小幅修正。",
+        "共同檢視重現結果、測試或修正，記錄已驗證的內容與遇到的問題。",
+        "訂出衝刺後的下一步，例如更新 issue、完善測試或準備 pull request。"
       ],
+      "level": "intermediate",
       "repositoryUrl": "https://github.com/django/django",
       "setupUrl": "https://docs.djangoproject.com/en/6.0/intro/contributing/",
       "status": "published",
@@ -124,14 +130,18 @@
       "description": "以小組形式從 Django 問題追蹤系統選擇一項程式碼或測試任務。歡迎首次參與開源貢獻的人。"
     },
     {
-      "skills": [],
+      "skills": [
+        "能閱讀英文技術文件，並以所選語言清楚表達。"
+      ],
       "leadProfileUrl": "https://www.linkedin.com/in/lunadev/",
       "discordUrl": "",
       "contributions": [
-        "在一項具體貢獻上取得進展，例如審閱譯文。",
-        "了解活動結束後如何繼續貢獻。"
+        "選一小段 Django 文件，將所選語言的版本與英文原文對照。",
+        "檢查譯文是否保留原意、Django 術語是否一致，並核對程式碼範例。",
+        "共同審閱譯文。已獲語言團隊批准的人可在 Transifex 提出修改建議，等候審核的人可先保留草稿。",
+        "記錄尚待確認的用字或術語，方便活動後繼續審閱。"
       ],
-      "level": "",
+      "level": "all-levels",
       "repositoryUrl": "https://explore.transifex.com/django/django-docs/",
       "setupUrl": "https://docs.djangoproject.com/en/6.0/internals/contributing/localizing/",
       "status": "published",

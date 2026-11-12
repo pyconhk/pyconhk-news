@@ -110,11 +110,17 @@
       "description": "Qwen3 계열에 맞춘 모델 구조를 채택한 경량 프레임워크 MiniMind를 사용해 적은 비용으로 소형 언어 모델을 학습시키는 방법을 익힙니다."
     },
     {
+      "skills": [
+        "Python 기초와 Django에 대한 기본적인 이해가 있으면 도움이 됩니다."
+      ],
       "leadProfileUrl": "https://www.linkedin.com/in/lunadev/",
       "contributions": [
-        "버그를 재현하거나 회귀 테스트를 작성하는 등 구체적인 기여 한 가지를 진행합니다.",
-        "스프린트 이후에도 기여를 이어가는 방법을 배웁니다."
+        "그룹에서 Django 이슈를 하나 고르고 확인할 동작을 정합니다.",
+        "문제를 재현해 절차를 기록하거나, 회귀 테스트를 작성하거나, 작은 수정에 도전합니다.",
+        "재현 결과, 테스트 또는 수정 내용을 함께 검토하고 확인한 내용과 남은 문제를 기록합니다.",
+        "이슈 업데이트, 테스트 개선, 풀 리퀘스트 준비 등 스프린트 이후의 다음 단계를 정합니다."
       ],
+      "level": "intermediate",
       "repositoryUrl": "https://github.com/django/django",
       "setupUrl": "https://docs.djangoproject.com/en/6.0/intro/contributing/",
       "status": "published",
@@ -124,14 +130,18 @@
       "description": "소규모 그룹으로 Django 이슈 트래커에서 코드 또는 테스트 작업을 하나 골라 진행합니다. 처음 기여하는 분도 환영합니다."
     },
     {
-      "skills": [],
+      "skills": [
+        "영어 기술 문서를 읽고 선택한 언어로 명확하게 표현하는 능력."
+      ],
       "leadProfileUrl": "https://www.linkedin.com/in/lunadev/",
       "discordUrl": "",
       "contributions": [
-        "번역 검토 등 구체적인 기여 한 가지를 진행합니다.",
-        "스프린트 이후에도 기여를 이어가는 방법을 배웁니다."
+        "Django 문서에서 짧은 부분을 골라 선택한 언어의 번역을 영어 원문과 비교합니다.",
+        "원문의 의미가 잘 전달되는지, Django 용어가 일관적인지, 코드 예제와 맞는지 확인합니다.",
+        "그룹에서 번역을 함께 검토합니다. 언어 팀의 승인을 받았다면 Transifex에 수정안을 제안하고, 승인 대기 중이라면 초안을 남깁니다.",
+        "표현이나 용어에 관해 남은 질문을 기록해 스프린트 이후에도 검토를 이어갑니다."
       ],
-      "level": "",
+      "level": "all-levels",
       "repositoryUrl": "https://explore.transifex.com/django/django-docs/",
       "setupUrl": "https://docs.djangoproject.com/en/6.0/internals/contributing/localizing/",
       "status": "published",

@@ -110,11 +110,17 @@
       "description": "Qwen3 系に合わせたモデル構造を持つ軽量フレームワーク MiniMind を使い、少ないコストで小規模な言語モデルの学習方法を学びます。"
     },
     {
+      "skills": [
+        "Python の基礎知識と Django の基本的な理解があると役立ちます。"
+      ],
       "leadProfileUrl": "https://www.linkedin.com/in/lunadev/",
       "contributions": [
-        "バグの再現や回帰テストの作成など、具体的な貢献を一つ進めます。",
-        "スプリント後も貢献を続ける方法を学びます。"
+        "グループで Django の課題を一つ選び、確認する動作を決める。",
+        "問題を再現して手順を記録する、回帰テストを書く、小さな修正を試す、のいずれかに取り組む。",
+        "再現結果やテスト、修正を一緒に確認し、分かったことと残った課題を記録する。",
+        "課題の更新、テストの改善、プルリクエストの準備など、スプリント後の次の一歩を決める。"
       ],
+      "level": "intermediate",
       "repositoryUrl": "https://github.com/django/django",
       "setupUrl": "https://docs.djangoproject.com/en/6.0/intro/contributing/",
       "status": "published",
@@ -124,14 +130,18 @@
       "description": "少人数のグループで Django の課題トラッカーからコードまたはテストの課題を選び、取り組みます。初めて貢献する方も歓迎です。"
     },
     {
-      "skills": [],
+      "skills": [
+        "英語の技術文書を読み、選んだ言語で分かりやすく書けること。"
+      ],
       "leadProfileUrl": "https://www.linkedin.com/in/lunadev/",
       "discordUrl": "",
       "contributions": [
-        "翻訳のレビューなど、具体的な貢献を一つ進めます。",
-        "スプリント後も貢献を続ける方法を学びます。"
+        "Django ドキュメントの短い一節を選び、希望する言語の訳文を英語の原文と読み比べる。",
+        "原文の意味や Django の用語、コード例が訳文に正しく反映されているか確認する。",
+        "グループで訳文を見直す。言語チームの承認があれば Transifex で修正を提案し、承認待ちの場合は下書きを残す。",
+        "判断がつかなかった表現や用語を記録し、スプリント後のレビューにつなげる。"
       ],
-      "level": "",
+      "level": "all-levels",
       "repositoryUrl": "https://explore.transifex.com/django/django-docs/",
       "setupUrl": "https://docs.djangoproject.com/en/6.0/internals/contributing/localizing/",
       "status": "published",
