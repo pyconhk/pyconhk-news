@@ -65,7 +65,7 @@
     {
       "id": "project-list",
       "question": "今年有哪些项目及 Sprint Lead？",
-      "answer": "Luciano Scarpulla 带领 nsh-py，使用纯 Python 构建原生桌面界面。Sam Lau 带领 MiniMind 大型语言模型训练项目。Soojin Yoon (Luna) 带领 Django 冲刺，设有代码与测试和文档翻译两条路线。请参阅 Sprint Day 页面的项目目标，了解如何参与。"
+      "answer": "Luciano Scarpulla 带领 nsh-py，使用纯 Python 构建原生桌面界面。Sam Lau 带领 MiniMind 大型语言模型训练项目。Soojin Yoon (Luna) 带领 Django 冲刺，设有代码与测试和文档翻译两条路线。dev1virtuoso 与 Jacky Chan 带领大家使用决策模型标注视频中的物体。请参阅 Sprint Day 页面的项目目标，了解如何参与。"
     }
   ],
   "status": "published",
@@ -150,6 +150,21 @@
       "id": "django-translation",
       "lead": "Soojin Yoon (Luna)",
       "description": "以小组形式在 Transifex 上改进 Django 官方文档的翻译。欢迎首次参与贡献的人。\n\n请在冲刺前打开 django-docs，点击 Join this project，登录或注册 Transifex，再选择希望贡献的语言并申请加入语言团队。请提前申请，给团队留出审核时间。获批后即可开始翻译。初次参与翻译的人也可以在 Django 国际化论坛自我介绍。"
+    },
+    {
+      "skills": [],
+      "contributions": [
+        "在本地运行决策模型。",
+        "使用模型逐帧标注视频中的物体。",
+        "探索如何结合模型与传统标注方法，提高工作效率。"
+      ],
+      "status": "published",
+      "title": "使用决策模型标注视频",
+      "id": "video-tagging",
+      "lead": "dev1virtuoso, Jacky Chan",
+      "description": "在自己的电脑上运行决策模型，逐帧标注视频中的物体。活动以中文进行。\n\n本地环境需要 Ollama 和 uv，clef-flash 模型下载约为 12 GB。",
+      "repositoryUrl": "https://github.com/dev1virtuoso/Event/tree/main/HKPUG/PyCon%202026/Sprint",
+      "setupUrl": "https://github.com/dev1virtuoso/Event/blob/main/HKPUG/PyCon%202026/Sprint/README.md#setup-your-environment"
     }
   ],
   "proposalUrl": "https://cfp.pycon.hk/pyconhk2026/cfp"
