@@ -164,7 +164,8 @@
       "lead": "dev1virtuoso, Jacky Chan",
       "description": "在自己的電腦上執行決策模型，逐格標註影片中的物件。活動以中文進行。\n\n本機環境需要 Ollama 與 uv，clef-flash 模型下載約需 12 GB。",
       "repositoryUrl": "https://github.com/dev1virtuoso/Event/tree/main/HKPUG/PyCon%202026/Sprint",
-      "setupUrl": "https://github.com/dev1virtuoso/Event/blob/main/HKPUG/PyCon%202026/Sprint/README.md#setup-your-environment"
+      "setupUrl": "https://github.com/dev1virtuoso/Event/blob/main/HKPUG/PyCon%202026/Sprint/README.md#setup-your-environment",
+      "level": "intermediate"
     }
   ],
   "proposalUrl": "https://cfp.pycon.hk/pyconhk2026/cfp"
