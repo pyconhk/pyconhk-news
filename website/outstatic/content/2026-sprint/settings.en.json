@@ -65,7 +65,7 @@
     {
       "id": "project-list",
       "question": "Which projects and Sprint Leads are taking part?",
-      "answer": "Luciano Scarpulla leads nsh-py, which brings native desktop UIs to plain Python. Sam Lau leads Training an LLM with MiniMind. Soojin Yoon (Luna) leads a Django sprint with two tracks: code and tests, and documentation translation. See the project goals and preparation steps on the Sprint Day page."
+      "answer": "Luciano Scarpulla leads nsh-py, which brings native desktop UIs to plain Python. Sam Lau leads Training an LLM with MiniMind. Soojin Yoon (Luna) leads a Django sprint with two tracks: code and tests, and documentation translation. dev1virtuoso and Jacky Chan lead a sprint on using a decision model to tag objects in videos. See the project goals and preparation steps on the Sprint Day page."
     }
   ],
   "status": "published",
@@ -150,6 +150,21 @@
       "id": "django-translation",
       "lead": "Soojin Yoon (Luna)",
       "description": "Work in small groups to improve Django’s documentation translations on Transifex. First-time contributors are welcome.\n\nBefore the sprint, open the django-docs project and click Join this project. Sign in or create a Transifex account, select your language and request to join its team. Apply early so your team has time to review your request. You can start translating once approved. New translators can also introduce themselves on the Django Internationalization Forum."
+    },
+    {
+      "skills": [],
+      "contributions": [
+        "Run the decision model on your own computer.",
+        "Use the model to tag objects in video frames.",
+        "Explore how to combine the model with traditional tagging methods to make the work more efficient."
+      ],
+      "status": "published",
+      "title": "Sprint-decision model on video tagging",
+      "id": "video-tagging",
+      "lead": "dev1virtuoso, Jacky Chan",
+      "description": "Run a decision model locally and use it to tag objects in a video frame by frame. The session is in Chinese.\n\nFor local setup, you’ll need Ollama and uv. The clef-flash model download is about 12 GB.",
+      "repositoryUrl": "https://github.com/dev1virtuoso/Event/tree/main/HKPUG/PyCon%202026/Sprint",
+      "setupUrl": "https://github.com/dev1virtuoso/Event/blob/main/HKPUG/PyCon%202026/Sprint/README.md#setup-your-environment"
     }
   ],
   "proposalUrl": "https://cfp.pycon.hk/pyconhk2026/cfp"
