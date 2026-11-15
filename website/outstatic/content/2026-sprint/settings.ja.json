@@ -164,7 +164,8 @@
       "lead": "dev1virtuoso, Jacky Chan",
       "description": "手元の環境で意思決定モデルを動かし、動画内の物体をフレームごとにタグ付けします。セッションは中国語で行います。\n\nローカル環境のセットアップには Ollama と uv が必要です。clef-flash モデルのダウンロードは約 12 GB です。",
       "repositoryUrl": "https://github.com/dev1virtuoso/Event/tree/main/HKPUG/PyCon%202026/Sprint",
-      "setupUrl": "https://github.com/dev1virtuoso/Event/blob/main/HKPUG/PyCon%202026/Sprint/README.md#setup-your-environment"
+      "setupUrl": "https://github.com/dev1virtuoso/Event/blob/main/HKPUG/PyCon%202026/Sprint/README.md#setup-your-environment",
+      "level": "intermediate"
     }
   ],
   "proposalUrl": "https://cfp.pycon.hk/pyconhk2026/cfp"
