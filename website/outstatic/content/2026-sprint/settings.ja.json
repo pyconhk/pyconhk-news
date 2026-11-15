@@ -65,7 +65,7 @@
     {
       "id": "project-list",
       "question": "今年はどのプロジェクトやリードが参加しますか？",
-      "answer": "Luciano Scarpulla は、素の Python でネイティブデスクトップ UI を作る nsh-py をリードします。Sam Lau は MiniMind を使った大規模言語モデルの学習プロジェクトをリードします。Soojin Yoon (Luna) がリードする Django スプリントには、コード・テストとドキュメント翻訳の二つのトラックがあります。参加方法は Sprint Day ページの各プロジェクトの目標をご覧ください。"
+      "answer": "Luciano Scarpulla は、素の Python でネイティブデスクトップ UI を作る nsh-py をリードします。Sam Lau は MiniMind を使った大規模言語モデルの学習プロジェクトをリードします。Soojin Yoon (Luna) がリードする Django スプリントには、コード・テストとドキュメント翻訳の二つのトラックがあります。dev1virtuoso と Jacky Chan は、意思決定モデルで動画内の物体をタグ付けするスプリントをリードします。参加方法は Sprint Day ページの各プロジェクトの目標をご覧ください。"
     }
   ],
   "status": "published",
@@ -150,6 +150,21 @@
       "id": "django-translation",
       "lead": "Soojin Yoon (Luna)",
       "description": "少人数のグループで Transifex を使い、Django 公式ドキュメントの翻訳を改善します。初めて貢献する方も歓迎です。\n\nスプリントの前に django-docs を開き、Join this project を選んで Transifex にログインするかアカウントを作成してください。参加したい言語を選び、言語チームに早めに参加申請をしてください。承認後に翻訳を始められます。初めて翻訳に参加する方は Django の国際化フォーラムで自己紹介することもできます。"
+    },
+    {
+      "skills": [],
+      "contributions": [
+        "ローカル環境で意思決定モデルを動かす。",
+        "モデルを使って動画内の物体をフレームごとにタグ付けする。",
+        "従来のタグ付け手法と組み合わせ、作業を効率化する方法を探る。"
+      ],
+      "status": "published",
+      "title": "意思決定モデルによる動画のタグ付け",
+      "id": "video-tagging",
+      "lead": "dev1virtuoso, Jacky Chan",
+      "description": "手元の環境で意思決定モデルを動かし、動画内の物体をフレームごとにタグ付けします。セッションは中国語で行います。\n\nローカル環境のセットアップには Ollama と uv が必要です。clef-flash モデルのダウンロードは約 12 GB です。",
+      "repositoryUrl": "https://github.com/dev1virtuoso/Event/tree/main/HKPUG/PyCon%202026/Sprint",
+      "setupUrl": "https://github.com/dev1virtuoso/Event/blob/main/HKPUG/PyCon%202026/Sprint/README.md#setup-your-environment"
     }
   ],
   "proposalUrl": "https://cfp.pycon.hk/pyconhk2026/cfp"
