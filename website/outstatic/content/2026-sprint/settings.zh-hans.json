@@ -165,7 +165,8 @@
       "description": "在自己的电脑上运行决策模型，逐帧标注视频中的物体。活动以中文进行。\n\n本地环境需要 Ollama 和 uv，clef-flash 模型下载约为 12 GB。",
       "repositoryUrl": "https://github.com/dev1virtuoso/Event/tree/main/HKPUG/PyCon%202026/Sprint",
       "setupUrl": "https://github.com/dev1virtuoso/Event/blob/main/HKPUG/PyCon%202026/Sprint/README.md#setup-your-environment",
-      "level": "intermediate"
+      "level": "intermediate",
+      "discordUrl": "https://discord.com/channels/1246847132699332640/1571355159110619156"
     }
   ],
   "proposalUrl": "https://cfp.pycon.hk/pyconhk2026/cfp"
