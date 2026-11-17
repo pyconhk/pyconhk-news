@@ -6,13 +6,15 @@ status: published
 slug: pycon-hk-2026-recap
 author:
   name: PyCon HK
-coverImage: /outstatic/images/pyconhk2026logo.jpg
+coverImage: /outstatic/images/pyconhk2026-sprint-day.webp
 tags:
   - announcement
   - sprint
 ---
 
 PyCon HK 2026 は、将軍澳の香港資訊科技學院（HKIIT）で、11 月 14 日にカンファレンス、15 日に開発スプリントを開催しました。登壇者や参加者、運営にご協力いただいた皆さま、ありがとうございました。
+
+[スプリント当日の写真撮影：Scotty](https://drive.google.com/file/d/1g3FWhLiibm4QkQ69qkHqA9JnIPWwBK3_/view)
 
 ## 公式写真と登壇資料
 
@@ -22,16 +24,45 @@ PyCon HK 2026 は、将軍澳の香港資訊科技學院（HKIIT）で、11 月 
 
 ## 開発スプリントの成果
 
-日曜日は、参加者が 5 つのスプリントプロジェクトに分かれて共同作業を行いました。4 チームの発表資料を公開しています。
+### nsh-py
 
-- [nsh-py スプリント発表資料](https://drive.google.com/file/d/1VNg6nnTYm7WSm5XWWA3hZLDqKuyYhmau/view)
-- [MiniMind で大規模言語モデルを学習する](https://drive.google.com/file/d/1I9auW_lJHE9LMgpmeCDUNdNrYq1HugGy/view)
-- [Django スプリントの振り返り](https://docs.google.com/presentation/d/17z8ocS76H6CQkF7daQOVdXD3ytAfM3Hw/edit)
-- [決定モデルを使った動画のタグ付け](https://drive.google.com/file/d/1R_FulVe5KEfg1KlPfNcikqBosnEEBcAu/view)
+GitHub の記録では、スプリント当日に PyCon HK 2026 のタグが付いたプルリクエストが 16 件マージされました。バッジとタブのコンポーネント、macOS での Ctrl-C の修正、かんばんボードのサンプルなどが含まれます。
 
-nsh-py では、今回のイベントのタグが付いたプルリクエストが 16 件マージされました。バッジとタブのコンポーネント、macOS での Ctrl-C の修正、かんばんボードのサンプルなどが含まれます。 [マージ済みのプルリクエストを見る](https://github.com/lucianosrp/nsh-py/pulls?q=is%3Apr+is%3Amerged+label%3Apycon-hk-26)
+![ネイティブアプリ用コンポーネントを紹介する nsh-py の発表資料](/outstatic/images/pyconhk2026-sprint-nsh.webp)
 
-動画タグ付けチームは、質問項目を YAML で設定できるアノテーションツールを作り、動画のフレームにタグを付けるデモを行いました。 [プロジェクトの成果資料を見る](https://github.com/dev1virtuoso/Event/blob/main/HKPUG/PyCon%202026/Sprint/Draft/sprint-summary.pdf)
+[発表資料を見る（PDF）](https://drive.google.com/file/d/1VNg6nnTYm7WSm5XWWA3hZLDqKuyYhmau/view) · [マージ済みのプルリクエストを見る](https://github.com/lucianosrp/nsh-py/pulls?q=is%3Apr+is%3Amerged+label%3Apycon-hk-26)
+
+### MiniMind で大規模言語モデルを学習する
+
+チームは MiniMind に Apple MPS のサポートを追加し、言語モデルの事前学習と教師ありファインチューニングに取り組みました。ブロックチェーンに関する質問への回答例も紹介しました。
+
+![Apple MPS のサポート追加から教師ありファインチューニングまでを示す MiniMind のスライド](/outstatic/images/pyconhk2026-sprint-minimind.webp)
+
+[発表資料を見る（PDF）](https://drive.google.com/file/d/1I9auW_lJHE9LMgpmeCDUNdNrYq1HugGy/view)
+
+### Django のコードとテスト
+
+Django が初めての参加者は Django Girls のチュートリアルを進め、ローカル環境で開発サーバーを起動しました。チームは開発環境を整え、単独の Python スクリプトで Django ORM を使う方法を説明するドキュメントのプルリクエストを提出しました。
+
+![単独の Python スクリプトから ORM を使うためのドキュメント課題を説明する Django のスライド](/outstatic/images/pyconhk2026-sprint-django.webp)
+
+[Django 両チームの発表資料を見る（PDF）](https://docs.google.com/presentation/d/17z8ocS76H6CQkF7daQOVdXD3ytAfM3Hw/export/pdf#page=4) · [ドキュメントのプルリクエストを見る](https://github.com/django/django/pull/22291)
+
+### Django ドキュメント翻訳
+
+Transifex の Django ドキュメント翻訳プロジェクトに香港繁体字中国語（`zh_HK`）が追加されました。チームが推薦した 2 人のボランティアについて、Django のメンテナーは翻訳チームを管理できる状態になったことを確認しました。
+
+![Transifex に香港繁体字中国語が追加されたことを示す Django のスライド](/outstatic/images/pyconhk2026-sprint-django-translation.webp)
+
+[Django 両チームの発表資料を見る（PDF）](https://docs.google.com/presentation/d/17z8ocS76H6CQkF7daQOVdXD3ytAfM3Hw/export/pdf#page=5) · [Django フォーラムで確認する](https://forum.djangoproject.com/t/question-about-traditional-chinese-hong-kong-zh-hk-documentation-translations/46413/5)
+
+### 決定モデルを使った動画のタグ付け
+
+チームは動画をフレーム単位でアノテーションするツールと、デスクトップおよびブラウザー向けの画像ツールを開発しました。質問は YAML ファイルで変更でき、発表ではフレームごとのタグ付けを実演しました。
+
+![動画アノテーション、デスクトップとブラウザーの画像ツール、YAML の質問ファイルを紹介するスライド](/outstatic/images/pyconhk2026-sprint-video.webp)
+
+[発表資料を見る（PDF）](https://drive.google.com/file/d/1R_FulVe5KEfg1KlPfNcikqBosnEEBcAu/view) · [アノテーションツールのソースを見る](https://github.com/dev1virtuoso/Event/commit/c20fe9dcd668375b5d96d294c182258067529851)
 
 ## [PyShare](/2026/ja/pyshare/)
 

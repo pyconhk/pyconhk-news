@@ -6,13 +6,15 @@ status: published
 slug: pycon-hk-2026-recap
 author:
   name: PyCon HK
-coverImage: /outstatic/images/pyconhk2026logo.jpg
+coverImage: /outstatic/images/pyconhk2026-sprint-day.webp
 tags:
   - announcement
   - sprint
 ---
 
 PyCon HK 2026 brought the Python community together at HKIIT in Tseung Kwan O on 14 and 15 November. Thank you to everyone who shared an idea, gave a talk, contributed to a project or helped run the two days.
+
+[Sprint Day photo by Scotty](https://drive.google.com/file/d/1g3FWhLiibm4QkQ69qkHqA9JnIPWwBK3_/view)
 
 ## Conference photos and slides
 
@@ -22,16 +24,45 @@ PyCon HK 2026 brought the Python community together at HKIIT in Tseung Kwan O on
 
 ## Development Sprint results
 
-On Sunday, participants worked together on five Sprint projects. Four teams shared their presentation materials:
+### nsh-py
 
-- [nsh-py Sprint slides](https://drive.google.com/file/d/1VNg6nnTYm7WSm5XWWA3hZLDqKuyYhmau/view)
-- [Training an LLM with MiniMind](https://drive.google.com/file/d/1I9auW_lJHE9LMgpmeCDUNdNrYq1HugGy/view)
-- [Django Sprint recap](https://docs.google.com/presentation/d/17z8ocS76H6CQkF7daQOVdXD3ytAfM3Hw/edit)
-- [Video tagging with a decision model](https://drive.google.com/file/d/1R_FulVe5KEfg1KlPfNcikqBosnEEBcAu/view)
+GitHub records 16 pull requests tagged for PyCon HK 2026 that were merged on Sprint Day. They included badge and tab components, a macOS Ctrl-C fix, and a Kanban example.
 
-The nsh-py project merged 16 pull requests tagged for PyCon HK 2026, including badge and tab components, a fix for Ctrl-C on macOS, and a Kanban example. [Browse the merged pull requests](https://github.com/lucianosrp/nsh-py/pulls?q=is%3Apr+is%3Amerged+label%3Apycon-hk-26)
+![nsh-py Sprint Day recap with previews of the native app components](/outstatic/images/pyconhk2026-sprint-nsh.webp)
 
-The video tagging team built an annotation tool with questions configurable in YAML and demonstrated the workflow on video frames. [Read the project's results summary](https://github.com/dev1virtuoso/Event/blob/main/HKPUG/PyCon%202026/Sprint/Draft/sprint-summary.pdf)
+[View presentation PDF](https://drive.google.com/file/d/1VNg6nnTYm7WSm5XWWA3hZLDqKuyYhmau/view) · [Browse merged PRs](https://github.com/lucianosrp/nsh-py/pulls?q=is%3Apr+is%3Amerged+label%3Apycon-hk-26)
+
+### Training an LLM with MiniMind
+
+The team added Apple MPS support to MiniMind and worked through model pretraining and supervised fine-tuning. They showed a sample model response to a question about blockchain.
+
+![MiniMind slide listing the steps from Apple MPS support to supervised fine-tuning](/outstatic/images/pyconhk2026-sprint-minimind.webp)
+
+[View presentation PDF](https://drive.google.com/file/d/1I9auW_lJHE9LMgpmeCDUNdNrYq1HugGy/view)
+
+### Django Code and Tests
+
+A first-time Django user got a development server running locally with the Django Girls tutorial. The group worked through the contribution setup and opened a pull request documenting how to use Django’s ORM from a standalone Python script.
+
+![Django slide explaining the standalone ORM documentation ticket](/outstatic/images/pyconhk2026-sprint-django.webp)
+
+[View shared Django presentation PDF](https://docs.google.com/presentation/d/17z8ocS76H6CQkF7daQOVdXD3ytAfM3Hw/export/pdf#page=4) · [View documentation PR](https://github.com/django/django/pull/22291)
+
+### Django Documentation Translation
+
+Django added Traditional Chinese (Hong Kong), `zh_HK`, to its documentation project on Transifex. The team nominated two volunteer coordinators, and the Django maintainer later confirmed that both could manage the translation team.
+
+![Django Sprint update showing the Hong Kong Traditional Chinese locale on Transifex](/outstatic/images/pyconhk2026-sprint-django-translation.webp)
+
+[View shared Django presentation PDF](https://docs.google.com/presentation/d/17z8ocS76H6CQkF7daQOVdXD3ytAfM3Hw/export/pdf#page=5) · [View Django Forum update](https://forum.djangoproject.com/t/question-about-traditional-chinese-hong-kong-zh-hk-documentation-translations/46413/5)
+
+### Video tagging with a decision model
+
+The team built a video frame annotation studio and desktop and browser image tools. They put the annotation questions in a YAML file so users could edit them without changing the code, then demonstrated the frame tagging workflow.
+
+![Slide listing the video annotation studio, desktop and browser tools, and YAML question file](/outstatic/images/pyconhk2026-sprint-video.webp)
+
+[View presentation PDF](https://drive.google.com/file/d/1R_FulVe5KEfg1KlPfNcikqBosnEEBcAu/view) · [View Annotation Studio source](https://github.com/dev1virtuoso/Event/commit/c20fe9dcd668375b5d96d294c182258067529851)
 
 ## [PyShare](/2026/en/pyshare/)
 
