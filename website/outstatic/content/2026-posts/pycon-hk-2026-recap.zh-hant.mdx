@@ -6,13 +6,15 @@ status: published
 slug: pycon-hk-2026-recap
 author:
   name: PyCon HK
-coverImage: /outstatic/images/pyconhk2026logo.jpg
+coverImage: /outstatic/images/pyconhk2026-sprint-day.webp
 tags:
   - announcement
   - sprint
 ---
 
 11 月 14 日及 15 日，Python 社群在將軍澳香港資訊科技學院相聚。感謝每位分享想法、上台演講、參與專案或協助籌辦大會的朋友。
+
+[衝刺開發日照片由 Scotty 拍攝](https://drive.google.com/file/d/1g3FWhLiibm4QkQ69qkHqA9JnIPWwBK3_/view)
 
 ## 大會相簿與講者簡報
 
@@ -22,16 +24,45 @@ tags:
 
 ## 衝刺開發成果
 
-星期日，參加者分組協作完成五個 Sprint 專案的開發活動。以下四個團隊分享了簡報：
+### nsh-py
 
-- [nsh-py 衝刺開發簡報](https://drive.google.com/file/d/1VNg6nnTYm7WSm5XWWA3hZLDqKuyYhmau/view)
-- [使用 MiniMind 訓練大型語言模型](https://drive.google.com/file/d/1I9auW_lJHE9LMgpmeCDUNdNrYq1HugGy/view)
-- [Django Sprint 回顧](https://docs.google.com/presentation/d/17z8ocS76H6CQkF7daQOVdXD3ytAfM3Hw/edit)
-- [使用決策模型標註影片](https://drive.google.com/file/d/1R_FulVe5KEfg1KlPfNcikqBosnEEBcAu/view)
+GitHub 紀錄顯示，nsh-py 在衝刺開發日合併了 16 個標記為 PyCon HK 2026 的 PR，包括徽章和分頁元件、macOS 的 Ctrl-C 修正，以及 Kanban 看板範例。
 
-nsh-py 合併了 16 個標記為 PyCon HK 2026 的 pull request，包括徽章和分頁元件、macOS 上的 Ctrl-C 修正，以及 Kanban 看板範例。 [查看已合併的 pull request](https://github.com/lucianosrp/nsh-py/pulls?q=is%3Apr+is%3Amerged+label%3Apycon-hk-26)
+![nsh-py 衝刺簡報展示原生應用程式元件](/outstatic/images/pyconhk2026-sprint-nsh.webp)
 
-影片標註團隊開發了可透過 YAML 設定問題的標註工具，並示範如何逐格標註影片。 [查看專案成果簡報](https://github.com/dev1virtuoso/Event/blob/main/HKPUG/PyCon%202026/Sprint/Draft/sprint-summary.pdf)
+[查看成果簡報（PDF）](https://drive.google.com/file/d/1VNg6nnTYm7WSm5XWWA3hZLDqKuyYhmau/view) · [查看已合併的 PR](https://github.com/lucianosrp/nsh-py/pulls?q=is%3Apr+is%3Amerged+label%3Apycon-hk-26)
+
+### 使用 MiniMind 訓練大型語言模型
+
+團隊為 MiniMind 加入 Apple MPS 支援，實作語言模型的預訓練及監督式微調，並展示模型回答區塊鏈問題的範例。
+
+![MiniMind 投影片列出從 Apple MPS 支援到監督式微調的工作](/outstatic/images/pyconhk2026-sprint-minimind.webp)
+
+[查看成果簡報（PDF）](https://drive.google.com/file/d/1I9auW_lJHE9LMgpmeCDUNdNrYq1HugGy/view)
+
+### Django 程式碼與測試
+
+一位初次接觸 Django 的參加者跟隨 Django Girls 教學，在本機啟動了開發伺服器。團隊設定了 Django 開發環境，並提出文件 PR，說明如何在獨立 Python 腳本中使用 Django ORM。
+
+![Django 投影片介紹在獨立 Python 腳本使用 ORM 的文件任務](/outstatic/images/pyconhk2026-sprint-django.webp)
+
+[查看 Django 兩組共用簡報（PDF）](https://docs.google.com/presentation/d/17z8ocS76H6CQkF7daQOVdXD3ytAfM3Hw/export/pdf#page=4) · [查看文件 PR](https://github.com/django/django/pull/22291)
+
+### Django 文件翻譯
+
+Django 在 Transifex 的文件翻譯專案新增了香港繁體中文（`zh_HK`）。團隊提名了兩位義工擔任協調員，Django 維護者其後確認兩位均可管理翻譯團隊。
+
+![Django 衝刺更新投影片顯示 Transifex 已加入香港繁體中文](/outstatic/images/pyconhk2026-sprint-django-translation.webp)
+
+[查看 Django 兩組共用簡報（PDF）](https://docs.google.com/presentation/d/17z8ocS76H6CQkF7daQOVdXD3ytAfM3Hw/export/pdf#page=5) · [查看 Django 論壇更新](https://forum.djangoproject.com/t/question-about-traditional-chinese-hong-kong-zh-hk-documentation-translations/46413/5)
+
+### 使用決策模型標註影片
+
+團隊開發了逐格影片標註工具，以及桌面版和網頁版圖片工具。團隊將標註問題集中於 YAML 檔案，方便使用者直接修改，並示範了逐格標註流程。
+
+![投影片列出逐格標註工具、桌面版和網頁版工具，以及 YAML 問題檔](/outstatic/images/pyconhk2026-sprint-video.webp)
+
+[查看成果簡報（PDF）](https://drive.google.com/file/d/1R_FulVe5KEfg1KlPfNcikqBosnEEBcAu/view) · [查看標註工具原始碼](https://github.com/dev1virtuoso/Event/commit/c20fe9dcd668375b5d96d294c182258067529851)
 
 ## [PyShare 心事台](/2026/zh-hant/pyshare/)
 
